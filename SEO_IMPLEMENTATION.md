@@ -389,7 +389,7 @@
 1. **Phone**: +91-92663-01200 (Click-to-call enabled)
 2. **WhatsApp**: Floating button (always visible)
 3. **Forms**: Apply Now, Enquire Now, Download Brochure
-4. **Email**: info@amityonlineuniversity.com
+4. **Email**: contactamityonlineuniversity.com
 5. **Callback Request**: Add this feature
 
 **Response Time Goals:**

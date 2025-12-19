@@ -231,46 +231,44 @@ async function submitForm(form) {
     
     try {
         const phoneInput = form.querySelector('input[type="tel"]');
-        const nameInput = form.querySelector('input[type="text"]');
+        // Get name input - prefer named input, then writable text inputs
+        let nameInput = form.querySelector('input[name="fullName"]') || 
+                        form.querySelector('input[type="text"]:not([readonly])');
         const emailInput = form.querySelector('input[type="email"]');
         const countrySelect = form.querySelector('select');
         const checkbox = form.querySelector('input[type="checkbox"]');
         
-        // Get program name if available
-        let program = document.title.split('|')[0].trim() || 'General';
+        // Get course/program - check for course dropdown first, then hidden program field, then page title
+        let course = 'General';
+        const courseSelect = form.querySelector('select[name="course"]');
         const selectedProgramInput = form.querySelector('input[name="program"]');
-        if (selectedProgramInput && selectedProgramInput.value) {
-            program = selectedProgramInput.value;
+        
+        if (courseSelect && courseSelect.value) {
+            course = courseSelect.value;
+        } else if (selectedProgramInput && selectedProgramInput.value) {
+            course = selectedProgramInput.value;
+        } else {
+            course = document.title.split('|')[0].trim() || 'General';
         }
         
         const formData = {
-            formType: form.id.replace('Form', '').toLowerCase(),
+            formType: form.id.replace('Form', '').replace('hero', '').replace('Apply', 'apply').replace('Enquire', 'enquire').replace('Brochure', 'brochure').toLowerCase() || 'apply',
             name: nameInput?.value || '',
             phone: phoneInput?.value || '',
             email: emailInput?.value || '',
             consent: checkbox?.checked || false,
-            course: program
+            course: course
         };
         
-        // Simulated successful response (since submit-form.php doesn't exist)
-        // In production, this would make a real API call
+        // Normalize formType to match database enum values
+        if (formData.formType.includes('apply')) formData.formType = 'apply';
+        else if (formData.formType.includes('enquire')) formData.formType = 'enquire';
+        else if (formData.formType.includes('brochure') || formData.formType.includes('download')) formData.formType = 'brochure';
+        else formData.formType = 'apply';
+        
         console.log('Form data:', formData);
         
-        // Simulate success after validation
-        if (formData.name && formData.phone && formData.email && formData.consent) {
-            if (window.NotificationSystem) {
-                NotificationSystem.success('Thank you! Your application has been submitted successfully. Redirecting...');
-            }
-            sessionStorage.setItem('formSubmitted', 'true');
-            setTimeout(() => {
-                window.location.href = 'thank-you.html';
-            }, 1000);
-        } else {
-            throw new Error('Invalid form data');
-        }
-        
-        // Uncomment below for real API submission
-        /*
+        // Make API call to submit form
         const response = await fetch('submit-form.php', {
             method: 'POST',
             headers: {
@@ -282,12 +280,16 @@ async function submitForm(form) {
         const result = await response.json();
         
         if (result.success) {
+            if (window.NotificationSystem) {
+                NotificationSystem.success('Thank you! Your application has been submitted successfully. Redirecting...');
+            }
             sessionStorage.setItem('formSubmitted', 'true');
-            window.location.href = 'thank-you.html';
+            setTimeout(() => {
+                window.location.href = 'thank-you.html';
+            }, 1500);
         } else {
-            throw new Error('Server returned error');
+            throw new Error(result.message || 'Server returned error');
         }
-        */
     } catch (error) {
         console.error('Form submission error:', error);
         if (window.NotificationSystem) {
@@ -305,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Populate country dropdowns
     populateCountryDropdowns();
     
-    // Setup validation for all forms
-    const formIds = ['applyNowForm', 'enquireNowForm', 'downloadBrochureForm', 'heroApplyForm'];
+    // Setup validation for all forms (including all possible form IDs across pages)
+    const formIds = ['applyNowForm', 'enquireNowForm', 'downloadBrochureForm', 'heroApplyForm', 'apply-form'];
     formIds.forEach(formId => setupFormValidation(formId));
 });

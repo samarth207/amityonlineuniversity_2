@@ -194,6 +194,5 @@ if (document.readyState === 'loading') {
 // Make it globally available
 window.NotificationSystem = NotificationSystem;
 
-// Override alert function globally (optional - for backward compatibility)
-// Uncomment the next line if you want to replace all alert() calls automatically
-// window.alert = (message) => NotificationSystem.info(message);
+// Override alert function globally for beautiful notifications instead of browser prompts
+window.alert = (message) => NotificationSystem.info(message);

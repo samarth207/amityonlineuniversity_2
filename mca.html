@@ -30,6 +30,9 @@
     /></noscript>
     <!-- End Meta Pixel Code -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="description" content="💻 Online MCA Program | AI, Data Science, Cloud Computing | UGC Approved | Industry Certifications | 100% Job Support | EMI ₹7,500/month | Apply Now for Scholarship">
     <meta name="keywords" content="online mca india, mca online degree, master computer applications, mca ai specialization, mca data science, mca cloud computing, ugc approved mca, online mca for working professionals, distance mca, mca with placement support, affordable mca program">
     <meta name="author" content="Amity Online University">
@@ -60,7 +63,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=20251219">
     
     <style>
         .sticky-form {
@@ -193,6 +196,9 @@
                 <img src="assets/images/amity-logo.svg" alt="Amity Online" style="height: 50px; width: auto;">
             </a>
             
+            <!-- Mobile Enquire Button (visible only on mobile) -->
+            <a href="javascript:void(0)" onclick="openEnquireNowModal()" class="mobile-enquire-btn" style="display: none; background: white; color: var(--navy-blue); border: 2px solid var(--navy-blue); padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 0.9rem;">Enquire Now</a>
+            
             <ul class="nav-menu" id="navMenu">
                 <li><a href="programs" class="nav-link" style="display: flex; align-items: center; gap: 0.3rem;">Programs <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a></li>
                 <li><a href="scholarship" class="nav-link">Scholarships</a></li>
@@ -297,6 +303,20 @@
                         <div style="margin-bottom: 15px;">
                             <label style="display: block; color: #374151; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Email Id <span style="color: #dc2626;">*</span></label>
                             <input type="email" placeholder="abc@xyz.com" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px;">
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; color: #374151; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Course <span style="color: #dc2626;">*</span></label>
+                            <select required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; background: white; cursor: pointer;">
+                                <option value="MCA" selected>MCA - Master of Computer Applications</option>
+                                <option value="MBA">MBA - Master of Business Administration</option>
+                                <option value="BBA">BBA - Bachelor of Business Administration</option>
+                                <option value="BCA">BCA - Bachelor of Computer Applications</option>
+                                <option value="M.Com">M.Com - Master of Commerce</option>
+                                <option value="B.Com">B.Com - Bachelor of Commerce</option>
+                                <option value="MA">MA - Master of Arts</option>
+                                <option value="BA">BA - Bachelor of Arts</option>
+                            </select>
                         </div>
                         
                         <div style="margin-bottom: 18px; display: flex; gap: 8px; align-items: start;">
@@ -1250,7 +1270,7 @@
                             <div>
                                 <h4 style="font-size: 18px; color: #1e3a8a; margin: 0 0 5px 0; font-weight: 600;">Mohd. Aasif Ansari</h4>
                                 <p style="font-size: 13px; color: #6b7280; margin: 0 0 8px 0;">MBA - HRM Jan 25 Batch</p>
-                                <div style="color: #fbbf24; font-size: 14px;">â˜…â˜…â˜…â˜…â˜…</div>
+                                <div style="color: #fbbf24; font-size: 14px;">★★★★★</div>
                             </div>
                         </div>
                         <div class="testimonial-text" style="font-size: 14px; color: #4b5563; line-height: 1.7; max-height: 120px; overflow: hidden;">
@@ -1270,7 +1290,7 @@
                             <div>
                                 <h4 style="font-size: 18px; color: #1e3a8a; margin: 0 0 5px 0; font-weight: 600;">Jatin Gupta</h4>
                                 <p style="font-size: 13px; color: #6b7280; margin: 0 0 8px 0;">MBA July 2025 Batch</p>
-                                <div style="color: #fbbf24; font-size: 14px;">â˜…â˜…â˜…â˜…â˜…</div>
+                                <div style="color: #fbbf24; font-size: 14px;">★★★★★</div>
                             </div>
                         </div>
                         <div class="testimonial-text" style="font-size: 14px; color: #4b5563; line-height: 1.7; max-height: 120px; overflow: hidden;">
@@ -1290,7 +1310,7 @@
                             <div>
                                 <h4 style="font-size: 18px; color: #1e3a8a; margin: 0 0 5px 0; font-weight: 600;">Saichaitanya P.</h4>
                                 <p style="font-size: 13px; color: #6b7280; margin: 0 0 8px 0;">MBA HR First Year</p>
-                                <div style="color: #fbbf24; font-size: 14px;">â˜…â˜…â˜…â˜…â˜…</div>
+                                <div style="color: #fbbf24; font-size: 14px;">★★★★★</div>
                             </div>
                         </div>
                         <div class="testimonial-text" style="font-size: 14px; color: #4b5563; line-height: 1.7; max-height: 120px; overflow: hidden;">
@@ -1310,7 +1330,7 @@
                             <div>
                                 <h4 style="font-size: 18px; color: #1e3a8a; margin: 0 0 5px 0; font-weight: 600;">Anney George</h4>
                                 <p style="font-size: 13px; color: #6b7280; margin: 0 0 8px 0;">Dental Surgeon</p>
-                                <div style="color: #fbbf24; font-size: 14px;">â˜…â˜…â˜…â˜…â˜…</div>
+                                <div style="color: #fbbf24; font-size: 14px;">★★★★★</div>
                             </div>
                         </div>
                         <div class="testimonial-text" style="font-size: 14px; color: #4b5563; line-height: 1.7; max-height: 120px; overflow: hidden;">
@@ -1330,7 +1350,7 @@
                             <div>
                                 <h4 style="font-size: 18px; color: #1e3a8a; margin: 0 0 5px 0; font-weight: 600;">Sangita Kumari</h4>
                                 <p style="font-size: 13px; color: #6b7280; margin: 0 0 8px 0;">Assistant Manager</p>
-                                <div style="color: #fbbf24; font-size: 14px;">â˜…â˜…â˜…â˜…â˜…</div>
+                                <div style="color: #fbbf24; font-size: 14px;">★★★★★</div>
                             </div>
                         </div>
                         <div class="testimonial-text" style="font-size: 14px; color: #4b5563; line-height: 1.7; max-height: 120px; overflow: hidden;">
@@ -1350,7 +1370,7 @@
                             <div>
                                 <h4 style="font-size: 18px; color: #1e3a8a; margin: 0 0 5px 0; font-weight: 600;">Mohammad Asif</h4>
                                 <p style="font-size: 13px; color: #6b7280; margin: 0 0 8px 0;">MBA Final Year</p>
-                                <div style="color: #fbbf24; font-size: 14px;">â˜…â˜…â˜…â˜…â˜…</div>
+                                <div style="color: #fbbf24; font-size: 14px;">★★★★★</div>
                             </div>
                         </div>
                         <div class="testimonial-text" style="font-size: 14px; color: #4b5563; line-height: 1.7; max-height: 120px; overflow: hidden;">
@@ -1370,7 +1390,7 @@
                             <div>
                                 <h4 style="font-size: 18px; color: #1e3a8a; margin: 0 0 5px 0; font-weight: 600;">Halimath Afseena</h4>
                                 <p style="font-size: 13px; color: #6b7280; margin: 0 0 8px 0;">MBA Student</p>
-                                <div style="color: #fbbf24; font-size: 14px;">â˜…â˜…â˜…â˜…â˜…</div>
+                                <div style="color: #fbbf24; font-size: 14px;">★★★★★</div>
                             </div>
                         </div>
                         <div class="testimonial-text" style="font-size: 14px; color: #4b5563; line-height: 1.7; max-height: 120px; overflow: hidden;">
@@ -1684,8 +1704,8 @@
         </div>
     </footer>
 
-    <script src="js/notification.js"></script>
-    <script src="js/form-validation.js"></script>
+    <script src="js/notification.js?v=20251219"></script>
+    <script src="js/form-validation.js?v=20251219"></script>
 
     <!-- ================================
          APPLY NOW MODAL
@@ -1699,39 +1719,53 @@
                 <div style="background: url('assets/images/apply-now-popup.webp') center/cover; min-height: 500px;"></div>
                 
                 <!-- Right Side - Form -->
-                <div style="padding: 40px;">
-                    <h2 style="color: #1e3a8a; font-size: 1.8rem; font-weight: 700; margin-bottom: 10px;">Start Your Application Now</h2>
-                    <p style="color: #6b7280; font-size: 0.95rem; margin-bottom: 30px;">Please provide the information below, and our counsellor will get in touch with you.</p>
+                <div style="padding: 25px 30px;">
+                    <h2 style="color: #1e3a8a; font-size: 1.5rem; font-weight: 700; margin-bottom: 8px;">Start Your Application Now</h2>
+                    <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 15px;">Please provide the information below, and our counsellor will get in touch with you.</p>
                     
                     <form id="applyNowForm">
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Phone Number <span style="color: #ef4444;">*</span></label>
-                            <div style="display: flex; gap: 10px;">
-                                <select style="width: 80px; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px; font-size: 0.8rem;">Phone Number <span style="color: #ef4444;">*</span></label>
+                            <div style="display: flex; gap: 8px;">
+                                <select style="width: 80px; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem;">
                                     <option>IN +91</option>
                                 </select>
-                                <input type="tel" placeholder="Enter your no." required style="flex: 1; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                                <input type="tel" placeholder="Enter your no." required style="flex: 1; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem;">
                             </div>
                         </div>
                         
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Full Name <span style="color: #ef4444;">*</span></label>
-                            <input type="text" placeholder="Enter your full name" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px; font-size: 0.8rem;">Full Name <span style="color: #ef4444;">*</span></label>
+                            <input type="text" placeholder="Enter your full name" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem;">
                         </div>
                         
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Email ID <span style="color: #ef4444;">*</span></label>
-                            <input type="email" placeholder="abc@xyz.com" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px; font-size: 0.8rem;">Email ID <span style="color: #ef4444;">*</span></label>
+                            <input type="email" placeholder="abc@xyz.com" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem;">
                         </div>
                         
-                        <div style="margin-bottom: 25px;">
-                            <label style="display: flex; gap: 8px; font-size: 0.75rem; color: #6b7280; line-height: 1.4;">
-                                <input type="checkbox" required style="margin-top: 2px;">
-                                <span>By entering these details I agree that Amity University Online and its associates can contact me with updates & notifications via Email, SMS, WhatsApp, and Voice call as per the Privacy Policy. This consent will override any registration for DNC / NDNC.</span>
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px; font-size: 0.8rem;">Course <span style="color: #ef4444;">*</span></label>
+                            <select name="course" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem; background: white; cursor: pointer;">
+                                <option value="MCA" selected>MCA - Master of Computer Applications</option>
+                                <option value="MBA">MBA - Master of Business Administration</option>
+                                <option value="BBA">BBA - Bachelor of Business Administration</option>
+                                <option value="BCA">BCA - Bachelor of Computer Applications</option>
+                                <option value="M.Com">M.Com - Master of Commerce</option>
+                                <option value="B.Com">B.Com - Bachelor of Commerce</option>
+                                <option value="MA">MA - Master of Arts</option>
+                                <option value="BA">BA - Bachelor of Arts</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: flex; gap: 8px; font-size: 0.7rem; color: #6b7280; line-height: 1.4;">
+                                <input type="checkbox" required style="margin-top: 2px; flex-shrink: 0;">
+                                <span>By entering these details I agree that Amity University Online can contact me via Email, SMS, WhatsApp, and Voice call as per the Privacy Policy.</span>
                             </label>
                         </div>
                         
-                        <button type="submit" style="width: 100%; background: #1e3a8a; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='#2c5282'" onmouseout="this.style.background='#1e3a8a'">SUBMIT</button>
+                        <button type="submit" style="width: 100%; background: #1e3a8a; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='#2c5282'" onmouseout="this.style.background='#1e3a8a'">SUBMIT</button>
                     </form>
                 </div>
             </div>
@@ -1750,39 +1784,53 @@
                 <div style="background: url('assets/images/enquire-popup.webp') center/cover; min-height: 500px;"></div>
                 
                 <!-- Right Side - Form -->
-                <div style="padding: 40px;">
-                    <h2 style="color: #1e3a8a; font-size: 1.8rem; font-weight: 700; margin-bottom: 10px;">Connect with our counsellor</h2>
-                    <p style="color: #6b7280; font-size: 0.95rem; margin-bottom: 30px;">Please provide the information below, and our counsellor will get in touch with you.</p>
+                <div style="padding: 25px 30px;">
+                    <h2 style="color: #1e3a8a; font-size: 1.5rem; font-weight: 700; margin-bottom: 8px;">Connect with our counsellor</h2>
+                    <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 15px;">Please provide the information below, and our counsellor will get in touch with you.</p>
                     
                     <form id="enquireNowForm">
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Phone Number <span style="color: #ef4444;">*</span></label>
-                            <div style="display: flex; gap: 10px;">
-                                <select style="width: 80px; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px; font-size: 0.8rem;">Phone Number <span style="color: #ef4444;">*</span></label>
+                            <div style="display: flex; gap: 8px;">
+                                <select style="width: 80px; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem;">
                                     <option>IN +91</option>
                                 </select>
-                                <input type="tel" placeholder="Enter your no." required style="flex: 1; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                                <input type="tel" placeholder="Enter your no." required style="flex: 1; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem;">
                             </div>
                         </div>
                         
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Full Name <span style="color: #ef4444;">*</span></label>
-                            <input type="text" placeholder="Enter your full name" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px; font-size: 0.8rem;">Full Name <span style="color: #ef4444;">*</span></label>
+                            <input type="text" placeholder="Enter your full name" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem;">
                         </div>
                         
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Email ID <span style="color: #ef4444;">*</span></label>
-                            <input type="email" placeholder="abc@xyz.com" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px; font-size: 0.8rem;">Email ID <span style="color: #ef4444;">*</span></label>
+                            <input type="email" placeholder="abc@xyz.com" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem;">
                         </div>
                         
-                        <div style="margin-bottom: 25px;">
-                            <label style="display: flex; gap: 8px; font-size: 0.75rem; color: #6b7280; line-height: 1.4;">
-                                <input type="checkbox" required style="margin-top: 2px;">
-                                <span>By entering these details I agree that Amity University Online and its associates can contact me with updates & notifications via Email, SMS, WhatsApp, and Voice call as per the Privacy Policy. This consent will override any registration for DNC / NDNC.</span>
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px; font-size: 0.8rem;">Course <span style="color: #ef4444;">*</span></label>
+                            <select name="course" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem; background: white; cursor: pointer;">
+                                <option value="MCA" selected>MCA - Master of Computer Applications</option>
+                                <option value="MBA">MBA - Master of Business Administration</option>
+                                <option value="BBA">BBA - Bachelor of Business Administration</option>
+                                <option value="BCA">BCA - Bachelor of Computer Applications</option>
+                                <option value="M.Com">M.Com - Master of Commerce</option>
+                                <option value="B.Com">B.Com - Bachelor of Commerce</option>
+                                <option value="MA">MA - Master of Arts</option>
+                                <option value="BA">BA - Bachelor of Arts</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: flex; gap: 8px; font-size: 0.7rem; color: #6b7280; line-height: 1.4;">
+                                <input type="checkbox" required style="margin-top: 2px; flex-shrink: 0;">
+                                <span>By entering these details I agree that Amity University Online can contact me via Email, SMS, WhatsApp, and Voice call as per the Privacy Policy.</span>
                             </label>
                         </div>
                         
-                        <button type="submit" style="width: 100%; background: #1e3a8a; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='#2c5282'" onmouseout="this.style.background='#1e3a8a'">SUBMIT</button>
+                        <button type="submit" style="width: 100%; background: #1e3a8a; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='#2c5282'" onmouseout="this.style.background='#1e3a8a'">SUBMIT</button>
                     </form>
                 </div>
             </div>
@@ -1801,39 +1849,53 @@
                 <div style="background: url('assets/images/brochure-popup.webp') center/cover; min-height: 500px;"></div>
                 
                 <!-- Right Side - Form -->
-                <div style="padding: 40px;">
-                    <h2 style="color: #1e3a8a; font-size: 1.8rem; font-weight: 700; margin-bottom: 10px;">Download Brochure</h2>
-                    <p style="color: #6b7280; font-size: 0.95rem; margin-bottom: 30px;">Fill in your details here and download a detailed brochure of the program</p>
+                <div style="padding: 25px 30px;">
+                    <h2 style="color: #1e3a8a; font-size: 1.5rem; font-weight: 700; margin-bottom: 8px;">Download Brochure</h2>
+                    <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 15px;">Fill in your details here and download a detailed brochure of the program</p>
                     
                     <form id="downloadBrochureForm">
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Phone Number <span style="color: #ef4444;">*</span></label>
-                            <div style="display: flex; gap: 10px;">
-                                <select style="width: 80px; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px; font-size: 0.8rem;">Phone Number <span style="color: #ef4444;">*</span></label>
+                            <div style="display: flex; gap: 8px;">
+                                <select style="width: 80px; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem;">
                                     <option>IN +91</option>
                                 </select>
-                                <input type="tel" placeholder="Enter your no." required style="flex: 1; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                                <input type="tel" placeholder="Enter your no." required style="flex: 1; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem;">
                             </div>
                         </div>
                         
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Name <span style="color: #ef4444;">*</span></label>
-                            <input type="text" placeholder="Enter your full name" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px; font-size: 0.8rem;">Name <span style="color: #ef4444;">*</span></label>
+                            <input type="text" placeholder="Enter your full name" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem;">
                         </div>
                         
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Email ID <span style="color: #ef4444;">*</span></label>
-                            <input type="email" placeholder="Enter your email" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px; font-size: 0.8rem;">Email ID <span style="color: #ef4444;">*</span></label>
+                            <input type="email" placeholder="Enter your email" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem;">
                         </div>
                         
-                        <div style="margin-bottom: 25px;">
-                            <label style="display: flex; gap: 8px; font-size: 0.75rem; color: #6b7280; line-height: 1.4;">
-                                <input type="checkbox" required style="margin-top: 2px;">
-                                <span>By entering these details I agree that Amity University Online and its associates can contact me with updates & notifications via Email, SMS, WhatsApp, and Voice call as per the Privacy Policy. This consent will override any registration for DNC / NDNC.</span>
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px; font-size: 0.8rem;">Course <span style="color: #ef4444;">*</span></label>
+                            <select name="course" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.85rem; background: white; cursor: pointer;">
+                                <option value="MCA" selected>MCA - Master of Computer Applications</option>
+                                <option value="MBA">MBA - Master of Business Administration</option>
+                                <option value="BBA">BBA - Bachelor of Business Administration</option>
+                                <option value="BCA">BCA - Bachelor of Computer Applications</option>
+                                <option value="M.Com">M.Com - Master of Commerce</option>
+                                <option value="B.Com">B.Com - Bachelor of Commerce</option>
+                                <option value="MA">MA - Master of Arts</option>
+                                <option value="BA">BA - Bachelor of Arts</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: flex; gap: 8px; font-size: 0.7rem; color: #6b7280; line-height: 1.4;">
+                                <input type="checkbox" required style="margin-top: 2px; flex-shrink: 0;">
+                                <span>By entering these details I agree that Amity University Online can contact me via Email, SMS, WhatsApp, and Voice call as per the Privacy Policy.</span>
                             </label>
                         </div>
                         
-                        <button type="submit" style="width: 100%; background: #1e3a8a; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='#2c5282'" onmouseout="this.style.background='#1e3a8a'">SUBMIT</button>
+                        <button type="submit" style="width: 100%; background: #1e3a8a; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='#2c5282'" onmouseout="this.style.background='#1e3a8a'">SUBMIT</button>
                     </form>
                 </div>
             </div>
