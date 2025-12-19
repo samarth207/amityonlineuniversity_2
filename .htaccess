@@ -1,3 +1,11 @@
+# Force UTF-8 encoding for all files
+AddDefaultCharset UTF-8
+
+# Set Content-Type with UTF-8 for HTML files
+<FilesMatch "\.(html|htm)$">
+    ForceType "text/html; charset=utf-8"
+</FilesMatch>
+
 # Enable URL Rewriting
 RewriteEngine On
 
