@@ -207,7 +207,11 @@ function setupFormValidation(formId) {
         
         // Validate checkbox
         if (checkbox && !checkbox.checked) {
-            alert('Please accept the consent to proceed. We respect your privacy and will only use your information to provide you with program details.');
+            if (window.NotificationSystem) {
+                NotificationSystem.warning('Please accept the consent to proceed. We respect your privacy and will only use your information to provide you with program details.');
+            } else {
+                alert('Please accept the consent to proceed. We respect your privacy and will only use your information to provide you with program details.');
+            }
             isValid = false;
         }
         
@@ -254,8 +258,13 @@ async function submitForm(form) {
         
         // Simulate success after validation
         if (formData.name && formData.phone && formData.email && formData.consent) {
+            if (window.NotificationSystem) {
+                NotificationSystem.success('Thank you! Your application has been submitted successfully. Redirecting...');
+            }
             sessionStorage.setItem('formSubmitted', 'true');
-            window.location.href = 'thank-you.html';
+            setTimeout(() => {
+                window.location.href = 'thank-you.html';
+            }, 1000);
         } else {
             throw new Error('Invalid form data');
         }
@@ -281,7 +290,11 @@ async function submitForm(form) {
         */
     } catch (error) {
         console.error('Form submission error:', error);
-        alert('There was a connection error. Please check your internet connection and try again, or contact our admissions team at +91 8920785477.');
+        if (window.NotificationSystem) {
+            NotificationSystem.error('There was a connection error. Please check your internet connection and try again, or contact our admissions team at +91 8920785477.');
+        } else {
+            alert('There was a connection error. Please check your internet connection and try again, or contact our admissions team at +91 8920785477.');
+        }
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
     }

@@ -843,6 +843,7 @@
     
     <!-- JavaScript -->
     <script src="js/script.js"></script>
+    <script src="js/notification.js"></script>
     <script src="js/form-validation.js"></script>
     
     <!-- Apply Now Modal -->
@@ -932,70 +933,7 @@
         }
         
         // Apply Now Form Handler
-        document.addEventListener('DOMContentLoaded', function() {
-            const applyForm = document.getElementById('applyNowForm');
-            
-            if (applyForm) {
-                applyForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    const submitBtn = this.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.textContent;
-                    
-                    // Get form data
-                    const inputs = this.querySelectorAll('input');
-                    const phone = inputs[0]?.value || '';
-                    const name = inputs[1]?.value || '';
-                    const email = inputs[2]?.value || '';
-                    const consent = inputs[3]?.checked || false;
-                    
-                    // Validate consent
-                    if (!consent) {
-                        alert('Please accept the consent to proceed with your scholarship application. We respect your privacy and will only use your information to provide you with program details.');
-                        return;
-                    }
-                    
-                    // Show loading state
-                    submitBtn.textContent = 'Submitting...';
-                    submitBtn.disabled = true;
-                    
-                    try {
-                        const formData = {
-                            formType: 'apply',
-                            name: name,
-                            phone: phone,
-                            email: email,
-                            consent: consent,
-                            course: 'Scholarship Application'
-                        };
-                        
-                        const response = await fetch('submit-form.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(formData)
-                        });
-                        
-                        const result = await response.json();
-                        
-                        if (result.success) {
-                            sessionStorage.setItem('formSubmitted', 'true');
-                            window.location.href = 'thank-you';
-                        } else {
-                            alert('We apologize for the inconvenience. There was an issue submitting your scholarship application. Please try again or contact our admissions team at +91 89207 85477.');
-                            submitBtn.textContent = originalText;
-                            submitBtn.disabled = false;
-                        }
-                    } catch (error) {
-                        console.error('Form submission error:', error);
-                        alert('We apologize for the inconvenience. There was a connection error. Please check your internet connection and try again, or contact us at +91 89207 85477.');
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                    }
-                });
-            }
-        });
+        // Form is now handled by form-validation.js
     </script>
 </body>
 </html>

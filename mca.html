@@ -1210,69 +1210,7 @@
             });
         }
 
-        // Form Submission
-        const heroForm = document.getElementById('heroApplyForm');
-        if (heroForm) {
-            heroForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                
-                const submitBtn = heroForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn?.textContent || 'Submit';
-                
-                if (submitBtn) {
-                    submitBtn.textContent = 'Submitting...';
-                    submitBtn.disabled = true;
-                }
-                
-                try {
-                    const formData = {
-                        formType: 'apply',
-                        name: heroForm.querySelector('input[placeholder*="name" i]')?.value || '',
-                        phone: heroForm.querySelector('input[type="tel"]')?.value || '',
-                        email: heroForm.querySelector('input[type="email"]')?.value || '',
-                        consent: heroForm.querySelector('input[type="checkbox"]')?.checked || false,
-                        course: 'MCA'
-                    };
-                    
-                    if (!formData.consent) {
-                        alert('Please accept the consent to proceed with your MCA application. We respect your privacy and will only use your information to provide you with program details.');
-                        if (submitBtn) {
-                            submitBtn.textContent = originalText;
-                            submitBtn.disabled = false;
-                        }
-                        return;
-                    }
-                    
-                    const response = await fetch('submit-form.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(formData)
-                    });
-                    
-                    const result = await response.json();
-                    
-                    if (result.success) {
-                        sessionStorage.setItem('formSubmitted', 'true');
-                        window.location.href = 'thank-you';
-                    } else {
-                        alert('We apologize for the inconvenience. There was an issue submitting your MCA application. Please try again or contact our MCA admissions team at +91 89207 85477.');
-                        if (submitBtn) {
-                            submitBtn.textContent = originalText;
-                            submitBtn.disabled = false;
-                        }
-                    }
-                } catch (error) {
-                    console.error('Form submission error:', error);
-                    alert('We apologize for the inconvenience. There was a connection error. Please check your internet connection and try again, or contact our MCA admissions team at +91 89207 85477.');
-                    if (submitBtn) {
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                    }
-                }
-            });
-        }
+        // Hero form is now handled by form-validation.js
     </script>
 
     <!-- ================================
@@ -1747,6 +1685,7 @@
         </div>
     </footer>
 
+    <script src="js/notification.js"></script>
     <script src="js/form-validation.js"></script>
 
     <!-- ================================
@@ -2053,114 +1992,8 @@
             }
         });
         
-        // Form submission handler
-        async function submitFormData(formType, formElement) {
-            const formData = new FormData(formElement);
-            const phone = formData.get('phone') || formElement.querySelector('input[type="tel"]').value;
-            const name = formData.get('name') || formElement.querySelector('input[type="text"]').value;
-            const email = formData.get('email') || formElement.querySelector('input[type="email"]').value;
-            const consent = formElement.querySelector('input[type="checkbox"]').checked;
-            
-            // Get course name from page
-            const course = 'MCA'; // For mca.html
-            
-            const data = {
-                formType: formType,
-                course: course,
-                phone: phone,
-                name: name,
-                email: email,
-                consent: consent
-            };
-            
-            try {
-                const response = await fetch('submit-form.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    alert(result.message);
-                    formElement.reset();
-                    // Close the modal
-                    if (formType === 'apply') closeApplyNowModal();
-                    if (formType === 'enquire') closeEnquireNowModal();
-                    if (formType === 'brochure') closeDownloadBrochureModal();
-                } else {
-                    alert(result.message || 'Failed to submit form. Please try again.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again later.');
-            }
-        }
+        // Modal forms are now handled by form-validation.js
         
-        // Apply Now Form
-        document.getElementById('applyNowForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Submitting...';
-            submitBtn.disabled = true;
-            
-            try {
-                await submitFormData('apply', this);
-                sessionStorage.setItem('formSubmitted', 'true');
-                window.location.href = 'thank-you';
-            } catch (error) {
-                alert('We apologize for the inconvenience. There was an issue submitting your application. Please try again or contact our admissions team at +91 89207 85477.');
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-        
-        // Enquire Now Form
-        document.getElementById('enquireNowForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Submitting...';
-            submitBtn.disabled = true;
-            
-            try {
-                await submitFormData('enquire', this);
-                sessionStorage.setItem('formSubmitted', 'true');
-                window.location.href = 'thank-you';
-            } catch (error) {
-                alert('We apologize for the inconvenience. There was an issue submitting your enquiry. Please try again or contact us at +91 89207 85477.');
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-        
-        // Download Brochure Form
-        document.getElementById('downloadBrochureForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Preparing Download...';
-            submitBtn.disabled = true;
-            
-            try {
-                await submitFormData('brochure', this);
-                alert('Thank you for your interest! Your brochure download will begin shortly. Please check your downloads folder.');
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                this.reset();
-                document.getElementById('downloadBrochureModal').style.display = 'none';
-                document.body.style.overflow = 'auto';
-            } catch (error) {
-                alert('We apologize for the inconvenience. There was an issue processing your request. Please try again or contact us at +91 89207 85477.');
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-
         // Flip card touch support for mobile
         if ('ontouchstart' in window) {
             const flipCards = document.querySelectorAll('.flip-card');
