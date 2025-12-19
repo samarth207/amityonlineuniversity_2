@@ -1111,6 +1111,10 @@ if (applyForm) {
         submitBtn.disabled = true;
         
         try {
+            // Get course from dropdown if available
+            const courseSelect = applyForm.querySelector('select[name="course"]');
+            const course = courseSelect ? courseSelect.value : (document.title.split('|')[0].trim() || 'General Inquiry');
+            
             // Prepare form data
             const formData = {
                 formType: 'apply',
@@ -1118,7 +1122,7 @@ if (applyForm) {
                 phone: phoneNumberInput.value.trim(),
                 email: emailInput.value.trim(),
                 consent: consentCheckbox.checked,
-                course: 'General Inquiry'
+                course: course
             };
             
             // Submit form

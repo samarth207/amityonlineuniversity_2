@@ -1,4 +1,7 @@
 <?php
+// Set timezone to Indian Standard Time
+date_default_timezone_set('Asia/Kolkata');
+
 // Database configuration for Hostinger
 // Update these values with your Hostinger database credentials
 
@@ -20,6 +23,8 @@ function getDBConnection() {
                 PDO::ATTR_EMULATE_PREPARES => false
             ]
         );
+        // Set MySQL session timezone to IST
+        $conn->exec("SET time_zone = '+05:30'");
         return $conn;
     } catch(PDOException $e) {
         error_log("Connection failed: " . $e->getMessage());

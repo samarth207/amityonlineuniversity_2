@@ -525,6 +525,79 @@ endif;
         .toast i {
             font-size: 20px;
         }
+        
+        /* Copy button styles */
+        .copy-btn {
+            background: #f3f4f6;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            color: #6b7280;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .copy-btn:hover {
+            background: #e5e7eb;
+            color: #1e3a8a;
+        }
+        
+        .copy-btn.copied {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        /* Browser notification permission banner */
+        .notification-banner {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f59e0b;
+        }
+        
+        .notification-banner.hidden {
+            display: none;
+        }
+        
+        .notification-banner p {
+            color: #92400e;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .notification-banner button {
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .notification-banner button:hover {
+            background: #1e40af;
+        }
+        
+        .notification-banner .dismiss-btn {
+            background: transparent;
+            color: #92400e;
+            padding: 8px;
+            margin-left: 10px;
+        }
+        
+        .notification-banner .dismiss-btn:hover {
+            background: rgba(0,0,0,0.05);
+        }
     </style>
 </head>
 <body>
@@ -541,6 +614,15 @@ endif;
             </a>
         </div>
     </header>
+    
+    <!-- Notification Permission Banner -->
+    <div class="notification-banner hidden" id="notificationBanner">
+        <p><i class="fas fa-bell"></i> Enable browser notifications to get alerted when new submissions arrive, even when this tab is not active.</p>
+        <div>
+            <button onclick="requestNotificationPermission()"><i class="fas fa-bell"></i> Enable Notifications</button>
+            <button class="dismiss-btn" onclick="dismissNotificationBanner()"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
     
     <div class="container">
         <!-- Stats Cards -->
@@ -591,11 +673,12 @@ endif;
                             <th>Phone</th>
                             <th>Course</th>
                             <th>Submitted At</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody id="submissionsTable">
                         <tr>
-                            <td colspan="7">
+                            <td colspan="8">
                                 <div class="empty-state">
                                     <i class="fas fa-spinner fa-spin"></i>
                                     <p>Loading submissions...</p>
@@ -618,6 +701,71 @@ endif;
         let currentFilter = 'all';
         let lastSubmissionId = 0;
         let allSubmissions = [];
+        let notificationPermission = Notification.permission;
+        
+        // Check and show notification permission banner
+        function checkNotificationPermission() {
+            const banner = document.getElementById('notificationBanner');
+            const dismissed = localStorage.getItem('notificationBannerDismissed');
+            
+            if ('Notification' in window && Notification.permission === 'default' && !dismissed) {
+                banner.classList.remove('hidden');
+            }
+        }
+        
+        // Request notification permission
+        function requestNotificationPermission() {
+            Notification.requestPermission().then(permission => {
+                notificationPermission = permission;
+                document.getElementById('notificationBanner').classList.add('hidden');
+                if (permission === 'granted') {
+                    showToast('Browser notifications enabled!');
+                }
+            });
+        }
+        
+        // Dismiss notification banner
+        function dismissNotificationBanner() {
+            document.getElementById('notificationBanner').classList.add('hidden');
+            localStorage.setItem('notificationBannerDismissed', 'true');
+        }
+        
+        // Show browser notification
+        function showBrowserNotification(submission) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                const notification = new Notification('New Submission - Amity Online', {
+                    body: `${submission.name} - ${submission.course}\n${submission.form_type.toUpperCase()} Form`,
+                    icon: '_a/icons/apple-touch-icon.png',
+                    tag: 'new-submission-' + submission.id,
+                    requireInteraction: true
+                });
+                
+                notification.onclick = function() {
+                    window.focus();
+                    notification.close();
+                };
+                
+                // Auto close after 10 seconds
+                setTimeout(() => notification.close(), 10000);
+            }
+        }
+        
+        // Copy submission data to clipboard
+        function copySubmissionData(name, email, phone, course) {
+            const text = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCourse: ${course}`;
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Copied to clipboard!');
+            }).catch(err => {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('Copied to clipboard!');
+            });
+        }
         
         // Fetch submissions from API
         async function fetchSubmissions() {
@@ -633,6 +781,13 @@ endif;
                     if (allSubmissions.length > 0 && data.submissions.length > allSubmissions.length) {
                         const newCount = data.submissions.length - allSubmissions.length;
                         showToast(`${newCount} new submission${newCount > 1 ? 's' : ''} received!`);
+                        
+                        // Show browser notification for each new submission
+                        const newSubmissions = data.submissions.slice(0, newCount);
+                        newSubmissions.forEach(sub => showBrowserNotification(sub));
+                        
+                        // Play notification sound
+                        playNotificationSound();
                     }
                     
                     allSubmissions = data.submissions;
@@ -647,6 +802,15 @@ endif;
             }
             
             refreshBtn.classList.remove('loading');
+        }
+        
+        // Play notification sound
+        function playNotificationSound() {
+            try {
+                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2teleVMxQYq84teleU8yQYq80dWjb0QxR4e5yNimZ0EvS4q8x9WgaEMwR4a8x9SfZ0MwR4i9x9KeZ0MwR4i9x9KeZ0IwSIi+xtOdZkIvSIm+xtOdZUEvSYq/xdKbZEEuSou/xNGaY0AuS4zA');
+                audio.volume = 0.3;
+                audio.play();
+            } catch (e) {}
         }
         
         // Update stats cards
@@ -684,7 +848,7 @@ endif;
             if (submissions.length === 0) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="7">
+                        <td colspan="8">
                             <div class="empty-state">
                                 <i class="fas fa-inbox"></i>
                                 <p>No submissions yet</p>
@@ -701,15 +865,25 @@ endif;
                     lastSubmissionId = submission.id;
                 }
                 
+                const escapedName = escapeHtml(submission.name);
+                const escapedEmail = escapeHtml(submission.email);
+                const escapedPhone = escapeHtml(submission.phone);
+                const escapedCourse = escapeHtml(submission.course);
+                
                 return `
                     <tr class="${isNew ? 'new-row' : ''}">
                         <td><strong>#${submission.id}</strong></td>
                         <td><span class="badge ${submission.form_type}">${submission.form_type}</span></td>
-                        <td>${escapeHtml(submission.name)}</td>
-                        <td><a href="mailto:${escapeHtml(submission.email)}" style="color: #3b82f6;">${escapeHtml(submission.email)}</a></td>
-                        <td><a href="tel:${escapeHtml(submission.phone)}" style="color: #3b82f6;">${escapeHtml(submission.phone)}</a></td>
-                        <td>${escapeHtml(submission.course)}</td>
+                        <td>${escapedName}</td>
+                        <td><a href="mailto:${escapedEmail}" style="color: #3b82f6;">${escapedEmail}</a></td>
+                        <td><a href="tel:${escapedPhone}" style="color: #3b82f6;">${escapedPhone}</a></td>
+                        <td>${escapedCourse}</td>
                         <td>${formatDate(submission.submitted_at)}</td>
+                        <td>
+                            <button class="copy-btn" onclick="copySubmissionData('${escapedName.replace(/'/g, "\\'")}', '${escapedEmail.replace(/'/g, "\\'")}', '${escapedPhone.replace(/'/g, "\\'")}', '${escapedCourse.replace(/'/g, "\\'")}')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </td>
                     </tr>
                 `;
             }).join('');
@@ -751,13 +925,6 @@ endif;
             toastMessage.textContent = message;
             toast.classList.add('show');
             
-            // Play notification sound (optional)
-            try {
-                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2teleVMxQYq84teleU8yQYq80dWjb0QxR4e5yNimZ0EvS4q8x9WgaEMwR4a8x9SfZ0MwR4i9x9KeZ0MwR4i9x9KeZ0IwSIi+xtOdZkIvSIm+xtOdZUEvSYq/xdKbZEEuSou/xNGaY0AuS4zA');
-                audio.volume = 0.3;
-                audio.play();
-            } catch (e) {}
-            
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 4000);
@@ -773,7 +940,8 @@ endif;
             });
         });
         
-        // Initial fetch
+        // Initial setup
+        checkNotificationPermission();
         fetchSubmissions();
         
         // Auto-refresh every 5 seconds for live updates

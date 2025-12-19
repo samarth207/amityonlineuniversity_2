@@ -238,7 +238,7 @@ async function submitForm(form) {
         const countrySelect = form.querySelector('select');
         const checkbox = form.querySelector('input[type="checkbox"]');
         
-        // Get course/program - check for course dropdown first, then hidden program field, then page title
+        // Get course/program - check for course dropdown first, then hidden program field, then any select with course values, then page title
         let course = 'General';
         const courseSelect = form.querySelector('select[name="course"]');
         const selectedProgramInput = form.querySelector('input[name="program"]');
@@ -248,7 +248,22 @@ async function submitForm(form) {
         } else if (selectedProgramInput && selectedProgramInput.value) {
             course = selectedProgramInput.value;
         } else {
-            course = document.title.split('|')[0].trim() || 'General';
+            // Try to find any select that has MBA/BBA/MCA options (course dropdown without name)
+            const allSelects = form.querySelectorAll('select');
+            for (let sel of allSelects) {
+                const options = Array.from(sel.options).map(o => o.value);
+                if (options.some(o => ['MBA', 'BBA', 'MCA', 'BCA'].includes(o))) {
+                    course = sel.value || 'General';
+                    break;
+                }
+            }
+            // Fallback to page title
+            if (course === 'General') {
+                const pageTitle = document.title.split('|')[0].trim();
+                if (pageTitle && pageTitle !== 'General') {
+                    course = pageTitle;
+                }
+            }
         }
         
         const formData = {
@@ -307,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Populate country dropdowns
     populateCountryDropdowns();
     
-    // Setup validation for all forms (including all possible form IDs across pages)
-    const formIds = ['applyNowForm', 'enquireNowForm', 'downloadBrochureForm', 'heroApplyForm', 'apply-form'];
+    // Setup validation for modal forms (hero forms are handled by script.js/mba.js with button state management)
+    const formIds = ['applyNowForm', 'enquireNowForm', 'downloadBrochureForm', 'heroApplyForm'];
     formIds.forEach(formId => setupFormValidation(formId));
 });
