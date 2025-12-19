@@ -1257,7 +1257,7 @@
                         sessionStorage.setItem('formSubmitted', 'true');
                         window.location.href = 'thank-you';
                     } else {
-                        alert('We apologize for the inconvenience. There was an issue submitting your MCA application. Please try again or contact our MCA admissions team at +91 92663 01200.');
+                        alert('We apologize for the inconvenience. There was an issue submitting your MCA application. Please try again or contact our MCA admissions team at +91 89207 85477.');
                         if (submitBtn) {
                             submitBtn.textContent = originalText;
                             submitBtn.disabled = false;
@@ -1265,7 +1265,7 @@
                     }
                 } catch (error) {
                     console.error('Form submission error:', error);
-                    alert('We apologize for the inconvenience. There was a connection error. Please check your internet connection and try again, or contact our MCA admissions team at +91 92663 01200.');
+                    alert('We apologize for the inconvenience. There was a connection error. Please check your internet connection and try again, or contact our MCA admissions team at +91 89207 85477.');
                     if (submitBtn) {
                         submitBtn.textContent = originalText;
                         submitBtn.disabled = false;
@@ -1726,7 +1726,7 @@
                 <div>
                     <h4 style="font-size: 20px; margin-bottom: 20px; font-weight: 600;">Contact Us</h4>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <p style="color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-phone" style="margin-right: 10px;"></i> +91 9266530366</p>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-phone" style="margin-right: 10px;"></i> +91 8920785477</p>
                         <p style="color: rgba(255,255,255,0.8); font-size: 14px;"><i class="fas fa-envelope" style="margin-right: 10px;"></i> contact@amityonlineuniversity.com</p>
                         <div style="display: flex; gap: 15px; margin-top: 10px;">
                             <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-facebook"></i></a>
@@ -1746,6 +1746,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="js/form-validation.js"></script>
 
     <!-- ================================
          APPLY NOW MODAL
@@ -2111,7 +2113,7 @@
                 sessionStorage.setItem('formSubmitted', 'true');
                 window.location.href = 'thank-you';
             } catch (error) {
-                alert('We apologize for the inconvenience. There was an issue submitting your application. Please try again or contact our admissions team at +91 92663 01200.');
+                alert('We apologize for the inconvenience. There was an issue submitting your application. Please try again or contact our admissions team at +91 89207 85477.');
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             }
@@ -2130,7 +2132,7 @@
                 sessionStorage.setItem('formSubmitted', 'true');
                 window.location.href = 'thank-you';
             } catch (error) {
-                alert('We apologize for the inconvenience. There was an issue submitting your enquiry. Please try again or contact us at +91 92663 01200.');
+                alert('We apologize for the inconvenience. There was an issue submitting your enquiry. Please try again or contact us at +91 89207 85477.');
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             }
@@ -2153,7 +2155,7 @@
                 document.getElementById('downloadBrochureModal').style.display = 'none';
                 document.body.style.overflow = 'auto';
             } catch (error) {
-                alert('We apologize for the inconvenience. There was an issue processing your request. Please try again or contact us at +91 92663 01200.');
+                alert('We apologize for the inconvenience. There was an issue processing your request. Please try again or contact us at +91 89207 85477.');
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             }
@@ -2173,10 +2175,10 @@
 
     <!-- Floating Contact Buttons -->
     <div class="floating-icons" style="position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; gap: 1rem;">
-        <a href="tel:+919266530366" style="width: 50px; height: 50px; background: #4267B2; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <a href="tel:+918920785477" style="width: 50px; height: 50px; background: #4267B2; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
             <i class="fas fa-phone"></i>
         </a>
-        <a href="https://wa.me/919266530366" target="_blank" style="width: 50px; height: 50px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <a href="https://wa.me/918920785477" target="_blank" style="width: 50px; height: 50px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>

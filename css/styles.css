@@ -638,6 +638,38 @@ p {
 }
 
 /* ================================
+   UGC BADGE
+   ================================ */
+
+.ugc-badge {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 1.5rem;
+}
+
+.ugc-badge img {
+  height: 28px;
+  width: auto;
+  flex-shrink: 0;
+  display: block;
+}
+
+.ugc-badge span {
+  color: var(--navy-blue);
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  display: block;
+}
+
+/* ================================
    TESTIMONIALS
    ================================ */
 
@@ -1035,6 +1067,173 @@ p {
   section[style*="background: #1e4d8b"] > div > div > div:last-child {
     padding: 40px 30px !important;
   }
+  
+  /* ================================
+     MODAL FORMS - MOBILE FIXES
+     ================================ */
+  /* Make modal container responsive */
+  #applyNowModal > div,
+  #enquireNowModal > div,
+  #downloadBrochureModal > div {
+    max-width: 95% !important;
+    margin: auto !important;
+  }
+  
+  /* Convert grid layout to single column */
+  #applyNowModal > div > div[style*="grid"],
+  #enquireNowModal > div > div[style*="grid"],
+  #downloadBrochureModal > div > div[style*="grid"] {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: auto !important;
+  }
+  
+  /* Hide image section on mobile */
+  #applyNowModal > div > div > div:first-child,
+  #enquireNowModal > div > div > div:first-child,
+  #downloadBrochureModal > div > div > div:first-child {
+    display: none !important;
+  }
+  
+  /* Reduce form padding for mobile */
+  #applyNowModal > div > div > div:last-child,
+  #enquireNowModal > div > div > div:last-child,
+  #downloadBrochureModal > div > div > div:last-child {
+    padding: 25px 20px !important;
+  }
+  
+  /* Adjust modal heading size */
+  #applyNowModal h2,
+  #enquireNowModal h2,
+  #downloadBrochureModal h2 {
+    font-size: 1.4rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  /* Adjust modal paragraph size */
+  #applyNowModal p,
+  #enquireNowModal p,
+  #downloadBrochureModal p {
+    font-size: 0.9rem !important;
+  }
+  
+  /* Make form inputs mobile-friendly */
+  #applyNowModal input,
+  #applyNowModal select,
+  #applyNowModal textarea,
+  #enquireNowModal input,
+  #enquireNowModal select,
+  #enquireNowModal textarea,
+  #downloadBrochureModal input,
+  #downloadBrochureModal select,
+  #downloadBrochureModal textarea {
+    font-size: 12px !important;
+    padding: 7px 8px !important;
+    min-height: 36px !important;
+  }
+  
+  /* Placeholder text size mobile */
+  #applyNowModal input::placeholder,
+  #applyNowModal textarea::placeholder,
+  #enquireNowModal input::placeholder,
+  #enquireNowModal textarea::placeholder,
+  #downloadBrochureModal input::placeholder,
+  #downloadBrochureModal textarea::placeholder {
+    font-size: 11px !important;
+    color: #9ca3af !important;
+  }
+  
+  /* Country code dropdown mobile */
+  #applyNowModal select,
+  #enquireNowModal select,
+  #downloadBrochureModal select {
+    width: 85px !important;
+    font-size: 11px !important;
+    padding: 7px 5px !important;
+  }
+  
+  /* Form labels mobile */
+  #applyNowModal label,
+  #enquireNowModal label,
+  #downloadBrochureModal label {
+    font-size: 0.8rem !important;
+    margin-bottom: 6px !important;
+  }
+  
+  /* Form margins mobile */
+  #applyNowModal form > div,
+  #enquireNowModal form > div,
+  #downloadBrochureModal form > div {
+    margin-bottom: 15px !important;
+  }
+  
+  /* Phone number flex container mobile - prevent overflow */
+  #applyNowModal div[style*="display: flex"][style*="gap: 10px"],
+  #enquireNowModal div[style*="display: flex"][style*="gap: 10px"],
+  #downloadBrochureModal div[style*="display: flex"][style*="gap: 10px"] {
+    gap: 6px !important;
+  }
+  
+  /* Prevent phone input from overflowing */
+  #applyNowModal input[type="tel"],
+  #enquireNowModal input[type="tel"],
+  #downloadBrochureModal input[type="tel"] {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  
+  /* Checkbox container mobile */
+  #applyNowModal div[style*="margin-bottom: 25px"],
+  #enquireNowModal div[style*="margin-bottom: 25px"],
+  #downloadBrochureModal div[style*="margin-bottom: 25px"] {
+    margin-bottom: 20px !important;
+  }
+  
+  /* Checkbox label mobile */
+  #applyNowModal label[style*="flex"],
+  #enquireNowModal label[style*="flex"],
+  #downloadBrochureModal label[style*="flex"] {
+    font-size: 0.7rem !important;
+    line-height: 1.3 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  
+  /* Checkbox input mobile - force visibility */
+  #applyNowModal input[type="checkbox"],
+  #enquireNowModal input[type="checkbox"],
+  #downloadBrochureModal input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    margin: 2px 0 0 0 !important;
+    flex-shrink: 0 !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    -webkit-appearance: checkbox !important;
+    appearance: checkbox !important;
+    border: 2px solid #d1d5db !important;
+  }
+  
+  /* Make submit buttons mobile-friendly */
+  #applyNowModal button[type="submit"],
+  #enquireNowModal button[type="submit"],
+  #downloadBrochureModal button[type="submit"] {
+    font-size: 14px !important;
+    padding: 11px !important;
+  }
+  
+  /* Error messages */
+  .error-message {
+    color: #ef4444 !important;
+    font-size: 0.7rem !important;
+    margin-top: 4px !important;
+  }
 }
 
 /* ================================
@@ -1258,22 +1457,30 @@ section[style*="bba-hero-bg"] > div.container > div[style*="grid"] > div[style*=
   /* UGC Badge */
   .ugc-badge {
     display: inline-flex !important;
+    flex-direction: row !important;
     align-items: center !important;
+    justify-content: flex-start !important;
     gap: 0.5rem !important;
     padding: 8px 14px !important;
     border-radius: 25px !important;
     margin-bottom: 1rem !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    background: white !important;
   }
   
   .ugc-badge img {
     height: 22px !important;
     width: auto !important;
+    flex-shrink: 0 !important;
+    display: block !important;
   }
   
   .ugc-badge span {
     font-size: 0.75rem !important;
     font-weight: 600 !important;
+    white-space: nowrap !important;
+    color: var(--navy-blue) !important;
+    display: block !important;
   }
   
   .hero .hero-grid > div:first-child > div:first-child {
