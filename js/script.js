@@ -976,11 +976,51 @@ if (applyForm) {
     consentCheckbox.addEventListener('change', validateForm);
     
     // Handle form submission
-    applyForm.addEventListener('submit', (e) => {
+    applyForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        alert('Thank you for your interest! Our counsellor will contact you soon.');
-        applyForm.reset();
-        validateForm();
+        
+        // Show loading state
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+        
+        try {
+            // Prepare form data
+            const formData = {
+                formType: 'apply',
+                name: fullNameInput.value.trim(),
+                phone: phoneNumberInput.value.trim(),
+                email: emailInput.value.trim(),
+                consent: consentCheckbox.checked,
+                course: 'General Inquiry'
+            };
+            
+            // Submit form
+            const response = await fetch('submit-form.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                // Store submission flag in session
+                sessionStorage.setItem('formSubmitted', 'true');
+                // Redirect to thank you page
+                window.location.href = 'thank-you';
+            } else {
+                alert('We apologize for the inconvenience. There was an issue submitting your application. Please try again or contact us directly at +91 92663 01200.');
+                submitBtn.textContent = 'Submit Application';
+                submitBtn.disabled = false;
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            alert('We apologize for the inconvenience. There was a connection error. Please check your internet connection and try again, or contact us directly at +91 92663 01200.');
+            submitBtn.textContent = 'Submit Application';
+            submitBtn.disabled = false;
+        }
     });
 }
 

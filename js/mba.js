@@ -8,16 +8,55 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroForm = document.getElementById('heroApplyForm');
     
     if (heroForm) {
-        heroForm.addEventListener('submit', function(e) {
+        heroForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const consent = document.getElementById('hero_consent').checked;
+            const submitBtn = heroForm.querySelector('button[type="submit"]');
             
-            if (consent) {
-                alert('Thank you for your interest! Our MBA counsellor will contact you within 24 hours.');
-                heroForm.reset();
-            } else {
-                alert('Please accept the consent to proceed.');
+            if (!consent) {
+                alert('Please accept the consent to proceed with your application. We respect your privacy and will only use your information to provide you with program details.');
+                return;
+            }
+            
+            // Show loading state
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = {
+                    formType: 'apply',
+                    name: document.getElementById('hero_name')?.value || '',
+                    phone: document.getElementById('hero_phone')?.value || '',
+                    email: document.getElementById('hero_email')?.value || '',
+                    consent: consent,
+                    course: 'MBA'
+                };
+                
+                const response = await fetch('submit-form.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    sessionStorage.setItem('formSubmitted', 'true');
+                    window.location.href = 'thank-you';
+                } else {
+                    alert('We apologize for the inconvenience. There was an issue submitting your application. Please try again or contact our MBA admissions team directly at +91 92663 01200.');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                alert('We apologize for the inconvenience. There was a connection error. Please check your internet connection and try again, or contact our MBA admissions team at +91 92663 01200.');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
             }
         });
     }
@@ -26,19 +65,63 @@ document.addEventListener('DOMContentLoaded', function() {
     const quickForm = document.getElementById('quickApplyForm');
     
     if (quickForm) {
-        quickForm.addEventListener('submit', function(e) {
+        quickForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const name = document.getElementById('quick_name').value;
             const phone = document.getElementById('quick_phone').value;
             const email = document.getElementById('quick_email').value;
             const consent = document.getElementById('quick_consent').checked;
+            const submitBtn = quickForm.querySelector('button[type="submit"]');
             
-            if (name && phone && email && consent) {
-                alert('Thank you for your interest! Our MBA counsellor will contact you within 24 hours.');
-                quickForm.reset();
-            } else {
-                alert('Please fill all required fields and accept consent.');
+            if (!name || !phone || !email) {
+                alert('Please fill in all required fields (Name, Phone, and Email) to proceed with your application.');
+                return;
+            }
+            
+            if (!consent) {
+                alert('Please accept the consent to proceed. We respect your privacy and will only use your information to provide you with MBA program details.');
+                return;
+            }
+            
+            // Show loading state
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = {
+                    formType: 'apply',
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    consent: consent,
+                    course: 'MBA'
+                };
+                
+                const response = await fetch('submit-form.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    sessionStorage.setItem('formSubmitted', 'true');
+                    window.location.href = 'thank-you';
+                } else {
+                    alert('We apologize for the inconvenience. There was an issue submitting your application. Please try again or contact our MBA admissions team directly at +91 92663 01200.');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                alert('We apologize for the inconvenience. There was a connection error. Please check your internet connection and try again, or contact our MBA admissions team at +91 92663 01200.');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
             }
         });
     }
@@ -71,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (link.textContent.includes('Download Brochure')) {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-                alert('MBA Brochure download will start shortly. Please check your downloads folder.');
+                alert('Thank you for your interest! Your MBA brochure download will begin shortly. Please check your downloads folder. If the download doesn\'t start, please contact us at +91 92663 01200.');
                 // In production, this would trigger actual PDF download
                 // window.location.href = 'assets/brochures/mba-brochure.pdf';
             });

@@ -1,0 +1,19 @@
+# Enable URL Rewriting
+RewriteEngine On
+
+# Remove .html extension from URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+# Redirect .html URLs to clean URLs
+RewriteCond %{THE_REQUEST} ^GET\ /([^\ ]+)\.html
+RewriteRule (.*)\.html$ /$1 [R=301,L]
+
+# Remove trailing slash if not a directory
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [R=301,L]
+
+# Default page - redirect to index without extension
+DirectoryIndex index.html
