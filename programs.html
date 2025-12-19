@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore 100+ UGC-approved online degree programs including MBA, BCA, MCA, BBA, and professional certifications.">
+    <meta name="keywords" content="online programs, MBA online, BCA online, MCA online, online certifications">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+    
+    <title>Programs - Amity Online University</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 0.5rem;">
+                <img src="assets/images/amity-logo.svg" alt="Amity Online" style="height: 50px; width: auto;">
+            </a>
+            
+            <!-- Mobile Enquire Button (visible only on mobile) -->
+            <a href="javascript:void(0)" onclick="openEnquireNowModal()" class="mobile-enquire-btn" style="display: none; background: white; color: var(--navy-blue); border: 2px solid var(--navy-blue); padding: 8px 20px; border-radius: 25px; font-weight: 600; font-size: 0.9rem;">Enquire Now</a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="programs.html" class="nav-link" style="display: flex; align-items: center; gap: 0.3rem;">Programs <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a></li>
+                <li><a href="index.html#career-services" class="nav-link">Career Services</a></li>
+                <li class="nav-search-desktop">
+                    <div style="position: relative; display: flex; align-items: center;">
+                        <input type="text" id="navSearchInput" placeholder="Search Programs..." autocomplete="off" style="padding: 8px 35px 8px 15px; border: 1px solid var(--border-color); border-radius: 20px; font-size: 0.9rem; width: 200px;">
+                        <i class="fas fa-search" style="position: absolute; right: 15px; color: var(--text-gray);"></i>
+                        <div id="navSearchResults" class="search-dropdown" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); margin-top: 5px; max-height: 300px; overflow-y: auto; z-index: 1000;"></div>
+                    </div>
+                </li>
+                
+                <div class="nav-cta">
+                    <a href="javascript:void(0)" onclick="openEnquireNowModal()" class="btn" style="background: white; color: var(--navy-blue); border: 2px solid var(--navy-blue);">Enquire Now</a>
+                    <a href="javascript:void(0)" onclick="openApplyNowModal()" class="btn btn-primary">Apply Now</a>
+                </div>
+            </ul>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Mobile Search Bar (visible only on mobile) -->
+    <div class="mobile-search-bar" style="display: none; background: white; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+        <div class="container">
+            <div style="position: relative; display: flex; align-items: center;">
+                <i class="fas fa-search" style="position: absolute; left: 15px; color: #9ca3af; font-size: 1.1rem;"></i>
+                <input type="text" id="mobileSearchInput" placeholder="Search Programs" autocomplete="off" style="width: 100%; padding: 12px 15px 12px 45px; border: 1px solid #e5e7eb; border-radius: 30px; font-size: 0.95rem; background: #f9fafb;">
+                <div id="mobileSearchResults" class="search-dropdown" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); margin-top: 5px; max-height: 300px; overflow-y: auto; z-index: 1000;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PAGE HERO -->
+    <section class="hero" style="padding: 0;">
+        <div class="container" style="padding-top: 0; padding-bottom: 0;">
+            <h1 style="font-size: 2.5rem; margin: 0;">Explore Our Programs</h1>
+            <p style="font-size: 1.1rem; margin: 0;">100+ UGC-Approved Online Degrees & Certifications</p>
+        </div>
+    </section>
+    
+    <!-- PROGRAMS SECTION -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; color: var(--navy-blue); margin-bottom: 2rem; font-weight: 600; text-align: center;">Explore our online degree programs</h2>
+            
+            <div class="programs-filter">
+                <button class="filter-btn active" data-filter="all">All Programs</button>
+                <button class="filter-btn" data-filter="ug">Undergraduate</button>
+                <button class="filter-btn" data-filter="pg">Postgraduate</button>
+                <button class="filter-btn" data-filter="cert">Certifications</button>
+            </div>
+            
+            <div class="programs-grid" id="programsGrid">
+                <!-- Postgraduate Programs -->
+                <div class="program-card" data-category="pg">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/master-of-business-administration-with-specialization-in-digital-marketing-management.webp" alt="MBA in Digital Marketing" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>MBA in Digital Marketing Management</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>24 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹2,50,000</span>
+                            </div>
+                        </div>
+                        <p>Master digital marketing strategies, SEO, social media, analytics, and campaign management.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="MBA in Digital Marketing" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="pg">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/master-of-business-administration-with-specialization-in-business-analytics.webp" alt="MBA in Business Analytics" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>MBA in Business Analytics</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>24 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹2,50,000</span>
+                            </div>
+                        </div>
+                        <p>Data-driven decision making, predictive analytics, business intelligence, and AI tools.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="MBA in Business Analytics" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="pg">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/master-of-business-administration-with-specialization-in-international-finance.webp" alt="MBA in Finance" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>MBA in Finance</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>24 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹2,50,000</span>
+                            </div>
+                        </div>
+                        <p>Financial management, investment banking, risk analysis, and corporate finance strategies.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="MBA in Finance" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="pg">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/master-of-business-administration-with-specialization-in-human-resource-analytics.webp" alt="MBA in Human Resource Management" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>MBA in Human Resource Management</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>24 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹2,50,000</span>
+                            </div>
+                        </div>
+                        <p>Talent management, organizational behavior, recruitment, and employee development.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="MBA in Human Resource Management" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="pg">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/master-of-computer-applications-with-specialization-in-cyber-security.webp" alt="MCA in Cybersecurity" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>MCA in Cybersecurity</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>24 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹3,00,000</span>
+                            </div>
+                        </div>
+                        <p>Network security, ethical hacking, cryptography, and advanced data protection techniques.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="MCA in Cybersecurity" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="pg">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/master-of-computer-applications.webp" alt="MCA in Cloud Computing" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>MCA in Cloud Computing</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>24 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹3,00,000</span>
+                            </div>
+                        </div>
+                        <p>Cloud architecture, AWS, Azure, DevOps, and scalable application development.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="MCA in Cloud Computing" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <!-- Undergraduate Programs -->
+                <div class="program-card" data-category="ug">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/bca-with-specialization-in-financial-technology-and-ai.webp" alt="BCA with AI & FinTech" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>BCA with AI & FinTech</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>36 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹2,75,000</span>
+                            </div>
+                        </div>
+                        <p>Computer applications with AI, machine learning, blockchain, and financial technology.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="BCA with AI & FinTech" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="ug">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/bachelor-of-computer-applications-with-specialization-in-data-analytics.webp" alt="BCA in Full Stack Development" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>BCA in Full Stack Development</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>36 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹2,75,000</span>
+                            </div>
+                        </div>
+                        <p>Frontend, backend, databases, and modern web development frameworks and tools.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="BCA in Full Stack Development" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="ug">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/bachelor-of-business-administration.webp" alt="BBA in Entrepreneurship" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>BBA in Entrepreneurship</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>36 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹2,25,000</span>
+                            </div>
+                        </div>
+                        <p>Startup strategies, business planning, innovation management, and leadership skills.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="BBA in Entrepreneurship" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="ug">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/bba-with-specialization-in-data-analytics.webp" alt="BBA in Marketing" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>BBA in Marketing</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>36 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹2,25,000</span>
+                            </div>
+                        </div>
+                        <p>Consumer behavior, branding, sales management, and integrated marketing communications.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="BBA in Marketing" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="ug">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/bachelor-of-commerce-honours.webp" alt="B.Com in Accounting & Finance" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>B.Com in Accounting & Finance</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>36 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹2,00,000</span>
+                            </div>
+                        </div>
+                        <p>Financial accounting, taxation, auditing, and corporate financial management.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="B.Com in Accounting & Finance" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="ug">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/bachelor-of-arts-journalism-and-mass-communication.webp" alt="BA in Psychology" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>BA in Psychology</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>36 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹2,00,000</span>
+                            </div>
+                        </div>
+                        <p>Human behavior, cognitive psychology, counseling, and organizational psychology.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="BA in Psychology" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <!-- Certifications -->
+                <div class="program-card" data-category="cert">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/master-of-science-data-science.webp" alt="Certificate in Data Science" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>Certificate in Data Science</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>6 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹75,000</span>
+                            </div>
+                        </div>
+                        <p>Data science fundamentals, Python, machine learning, and statistical analysis.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="Certificate in Data Science" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="cert">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/master-of-computer-applications-with-specialization-in-machine-learning-artificial-intelligence.webp" alt="Certificate in Artificial Intelligence" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>Certificate in Artificial Intelligence</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>6 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹80,000</span>
+                            </div>
+                        </div>
+                        <p>AI fundamentals, neural networks, deep learning, and practical AI applications.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="Certificate in Artificial Intelligence" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="cert">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/master-of-business-administration-with-specialization-in-digital-marketing-management.webp" alt="Certificate in Digital Marketing" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>Certificate in Digital Marketing</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>4 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹50,000</span>
+                            </div>
+                        </div>
+                        <p>SEO, SEM, social media marketing, content strategy, and Google Analytics.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="Certificate in Digital Marketing" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="cert">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/master-of-business-administration-in-general-management.webp" alt="Certificate in Project Management" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>Certificate in Project Management</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>5 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹60,000</span>
+                            </div>
+                        </div>
+                        <p>Agile, Scrum, project planning, risk management, and stakeholder communication.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="Certificate in Project Management" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="cert">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/master-of-computer-applications-with-specialization-in-cyber-security.webp" alt="Certificate in Ethical Hacking" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>Certificate in Ethical Hacking</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>6 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹70,000</span>
+                            </div>
+                        </div>
+                        <p>Penetration testing, vulnerability assessment, network security, and CEH preparation.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="Certificate in Ethical Hacking" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-category="cert">
+                    <div class="program-card-image">
+                        <img src="assets/images/course_images/master-of-business-administration-with-specialization-in-business-analytics.webp" alt="Certificate in Business Analytics" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="program-card-content">
+                        <h3>Certificate in Business Analytics</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>5 Months</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹65,000</span>
+                            </div>
+                        </div>
+                        <p>Data visualization, Excel analytics, Power BI, Tableau, and predictive modeling.</p>
+                        <button onclick="openApplyNowModal(this)" data-program="Certificate in Business Analytics" class="btn btn-secondary" style="border: none; cursor: pointer;">Apply Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA SECTION -->
+    <section class="section" style="background: var(--light-gray);">
+        <div class="container text-center">
+            <h2>Need Help Choosing the Right Program?</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                Our expert counselors will help you find the perfect program based on your career goals.
+            </p>
+            <a href="contact.html" class="btn btn-primary">Talk to a Counselor</a>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Amity Online</h3>
+                    <p>India's leading UGC-approved online university offering world-class education with flexible learning options.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="programs.html">All Programs</a>
+                        <a href="about.html">About Us</a>
+                        <a href="blog.html">Blog</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Programs</h3>
+                    <div class="footer-links">
+                        <a href="programs.html">MBA Programs</a>
+                        <a href="programs.html">BCA Programs</a>
+                        <a href="programs.html">MCA Programs</a>
+                        <a href="programs.html">Certifications</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> +91 9266530366</p>
+                    <p><i class="fas fa-envelope"></i> contact@amityonlineuniversity.com</p>
+                    <div class="accreditation-badges">
+                        <span class="badge">UGC Approved</span>
+                        <span class="badge">NAAC A+</span>
+                        <span class="badge">QS Ranked</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Amity Online University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Floating Contact Buttons -->
+    <div class="floating-icons" style="position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; gap: 1rem;">
+        <a href="tel:+919266530366" style="width: 50px; height: 50px; background: #4267B2; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://wa.me/919266530366" target="_blank" style="width: 50px; height: 50px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+    
+    <!-- APPLY NOW MODAL -->
+    <div id="applyNowModal" onclick="closeApplyNowModal()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.75); z-index: 9999; align-items: center; justify-content: center; padding: 20px; overflow-y: auto;">
+        <div onclick="event.stopPropagation()" style="background: white; border-radius: 20px; overflow: hidden; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+            <button onclick="closeApplyNowModal()" style="position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.9); border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-size: 24px; color: #1e3a8a; display: flex; align-items: center; justify-content: center; z-index: 10; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">×</button>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; min-height: 500px;">
+                <!-- Left Side - Image -->
+                <div style="background: url('assets/images/apply-now-popup.webp') center/cover; min-height: 500px;"></div>
+                
+                <!-- Right Side - Form -->
+                <div style="padding: 40px;">
+                    <h2 style="color: #1e3a8a; font-size: 1.8rem; font-weight: 700; margin-bottom: 10px;">Start Your Application Now</h2>
+                    <p style="color: #6b7280; font-size: 0.95rem; margin-bottom: 30px;">Please provide the information below, and our counsellor will get in touch with you.</p>
+                    
+                    <form id="applyNowForm">
+                        <input type="hidden" id="selectedProgram" name="program" value="">
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Program <span style="color: #ef4444;">*</span></label>
+                            <input type="text" id="programDisplay" readonly style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem; background: #f9fafb; color: #1e3a8a; font-weight: 600;">
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Phone Number <span style="color: #ef4444;">*</span></label>
+                            <div style="display: flex; gap: 10px;">
+                                <select id="countryCode" name="countryCode" style="width: 80px; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                                    <option>IN +91</option>
+                                </select>
+                                <input type="tel" id="phone" name="phone" placeholder="Enter your no." required style="flex: 1; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Full Name <span style="color: #ef4444;">*</span></label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Email ID <span style="color: #ef4444;">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="abc@xyz.com" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                        </div>
+                        
+                        <div style="margin-bottom: 25px;">
+                            <label style="display: flex; gap: 8px; font-size: 0.75rem; color: #6b7280; line-height: 1.4;">
+                                <input type="checkbox" id="consent" name="consent" required style="margin-top: 2px;">
+                                <span>By entering these details I agree that Amity University Online and its associates can contact me with updates & notifications via Email, SMS, WhatsApp, and Voice call as per the Privacy Policy. This consent will override any registration for DNC / NDNC.</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" style="width: 100%; background: #1e3a8a; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='#2c5282'" onmouseout="this.style.background='#1e3a8a'">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ENQUIRE NOW MODAL -->
+    <div id="enquireNowModal" onclick="closeEnquireNowModal()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.75); z-index: 9999; align-items: center; justify-content: center; padding: 20px; overflow-y: auto;">
+        <div onclick="event.stopPropagation()" style="background: white; border-radius: 20px; overflow: hidden; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+            <button onclick="closeEnquireNowModal()" style="position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.9); border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-size: 24px; color: #1e3a8a; display: flex; align-items: center; justify-content: center; z-index: 10; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">×</button>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; min-height: 500px;">
+                <!-- Left Side - Image -->
+                <div style="background: url('assets/images/enquire-now-popup.webp') center/cover; min-height: 500px;"></div>
+                
+                <!-- Right Side - Form -->
+                <div style="padding: 40px;">
+                    <h2 style="color: #1e3a8a; font-size: 1.8rem; font-weight: 700; margin-bottom: 10px;">Enquire Now</h2>
+                    <p style="color: #6b7280; font-size: 0.95rem; margin-bottom: 30px;">Get in touch with us for course details and admission guidance.</p>
+                    
+                    <form id="enquireNowForm">
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Phone Number <span style="color: #ef4444;">*</span></label>
+                            <div style="display: flex; gap: 10px;">
+                                <select style="width: 80px; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                                    <option>IN +91</option>
+                                </select>
+                                <input type="tel" placeholder="Enter your no." required style="flex: 1; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Full Name <span style="color: #ef4444;">*</span></label>
+                            <input type="text" placeholder="Enter your full name" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Email ID <span style="color: #ef4444;">*</span></label>
+                            <input type="email" placeholder="abc@xyz.com" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;">
+                        </div>
+                        
+                        <div style="margin-bottom: 25px;">
+                            <label style="display: flex; gap: 8px; font-size: 0.75rem; color: #6b7280; line-height: 1.4;">
+                                <input type="checkbox" required style="margin-top: 2px;">
+                                <span>By entering these details I agree that Amity University Online and its associates can contact me with updates & notifications via Email, SMS, WhatsApp, and Voice call as per the Privacy Policy. This consent will override any registration for DNC / NDNC.</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" style="width: 100%; background: #1e3a8a; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='#2c5282'" onmouseout="this.style.background='#1e3a8a'">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/script.js"></script>
+    <script>
+        // Modal functions
+        function openApplyNowModal(buttonElement) {
+            const modal = document.getElementById('applyNowModal');
+            const programName = buttonElement ? buttonElement.getAttribute('data-program') : '';
+            
+            if (programName) {
+                document.getElementById('selectedProgram').value = programName;
+                document.getElementById('programDisplay').value = programName;
+            }
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeApplyNowModal() {
+            document.getElementById('applyNowModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function openEnquireNowModal() {
+            document.getElementById('enquireNowModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeEnquireNowModal() {
+            document.getElementById('enquireNowModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Form submission handling
+        document.getElementById('applyNowForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                formType: 'apply',
+                course: document.getElementById('selectedProgram').value,
+                phone: document.getElementById('phone').value,
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                consent: document.getElementById('consent').checked
+            };
+            
+            try {
+                const response = await fetch('submit-form.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('Application submitted successfully! Our counsellor will contact you soon.');
+                    this.reset();
+                    closeApplyNowModal();
+                } else {
+                    alert(result.message || 'Failed to submit application. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.');
+            }
+        });
+        
+        document.getElementById('enquireNowForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your enquiry! Our team will contact you shortly.');
+            this.reset();
+            closeEnquireNowModal();
+        });
+        
+        // ================================
+        // PROGRAM SEARCH FUNCTIONALITY
+        // ================================
+        const programsData = [
+            { name: 'MBA with Dual Specialization', category: 'PG', type: 'Management', link: 'mba.html', duration: '24 months' },
+            { name: 'MBA in Hospital and Healthcare Management', category: 'PG', type: 'Management', link: 'mba.html', duration: '24 months' },
+            { name: 'MBA in Digital Marketing', category: 'PG', type: 'Management', link: 'mba.html', duration: '24 months' },
+            { name: 'MBA in Human Resource Management', category: 'PG', type: 'Management', link: 'mba.html', duration: '24 months' },
+            { name: 'MBA in Finance', category: 'PG', type: 'Management', link: 'mba.html', duration: '24 months' },
+            { name: 'MBA in International Business', category: 'PG', type: 'Management', link: 'mba.html', duration: '24 months' },
+            { name: 'MBA in Operations Management', category: 'PG', type: 'Management', link: 'mba.html', duration: '24 months' },
+            { name: 'MBA in Marketing', category: 'PG', type: 'Management', link: 'mba.html', duration: '24 months' },
+            { name: 'MBA in Business Analytics', category: 'PG', type: 'Management', link: 'mba.html', duration: '24 months' },
+            { name: 'MCA - Master of Computer Applications', category: 'PG', type: 'IT', link: 'mca.html', duration: '24 months' },
+            { name: 'MCA in Data Science', category: 'PG', type: 'IT', link: 'mca.html', duration: '24 months' },
+            { name: 'MCA in Artificial Intelligence', category: 'PG', type: 'IT', link: 'mca.html', duration: '24 months' },
+            { name: 'MCA in Cyber Security', category: 'PG', type: 'IT', link: 'mca.html', duration: '24 months' },
+            { name: 'MCA in Cloud Computing', category: 'PG', type: 'IT', link: 'mca.html', duration: '24 months' },
+            { name: 'BBA - Bachelor of Business Administration', category: 'UG', type: 'Management', link: 'bba.html', duration: '36 months' },
+            { name: 'BBA in Digital Marketing', category: 'UG', type: 'Management', link: 'bba.html', duration: '36 months' },
+            { name: 'BBA in Finance', category: 'UG', type: 'Management', link: 'bba.html', duration: '36 months' },
+            { name: 'BCA - Bachelor of Computer Applications', category: 'UG', type: 'IT', link: 'programs.html', duration: '36 months' },
+            { name: 'MA in Economics', category: 'PG', type: 'Arts', link: 'programs.html', duration: '24 months' },
+            { name: 'MA in English', category: 'PG', type: 'Arts', link: 'programs.html', duration: '24 months' },
+            { name: 'MA in Psychology', category: 'PG', type: 'Arts', link: 'programs.html', duration: '24 months' },
+            { name: 'MA in Journalism', category: 'PG', type: 'Arts', link: 'programs.html', duration: '24 months' },
+            { name: 'M.Com - Master of Commerce', category: 'PG', type: 'Commerce', link: 'programs.html', duration: '24 months' },
+            { name: 'B.Com - Bachelor of Commerce', category: 'UG', type: 'Commerce', link: 'programs.html', duration: '36 months' },
+            { name: 'BA in Economics', category: 'UG', type: 'Arts', link: 'programs.html', duration: '36 months' },
+            { name: 'BA in English', category: 'UG', type: 'Arts', link: 'programs.html', duration: '36 months' }
+        ];
+        
+        function searchPrograms(query) {
+            if (!query || query.length < 2) return [];
+            const searchTerm = query.toLowerCase();
+            return programsData.filter(program => 
+                program.name.toLowerCase().includes(searchTerm) ||
+                program.category.toLowerCase().includes(searchTerm) ||
+                program.type.toLowerCase().includes(searchTerm)
+            ).slice(0, 8);
+        }
+        
+        function renderSearchResults(results, container) {
+            if (results.length === 0) {
+                container.innerHTML = '<div style="padding: 15px; color: #666; text-align: center;">No programs found</div>';
+            } else {
+                container.innerHTML = results.map(program => `
+                    <a href="${program.link}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; border-bottom: 1px solid #eee; transition: background 0.2s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">
+                        <div style="width: 40px; height: 40px; background: var(--navy-blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 12px; flex-shrink: 0;">
+                            <i class="fas fa-graduation-cap" style="color: white; font-size: 1rem;"></i>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-weight: 600; color: var(--navy-blue); font-size: 0.9rem; margin-bottom: 2px;">${program.name}</div>
+                            <div style="font-size: 0.75rem; color: #666;">${program.category} • ${program.type} • ${program.duration}</div>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color: #ccc; font-size: 0.8rem;"></i>
+                    </a>
+                `).join('');
+            }
+            container.style.display = 'block';
+        }
+        
+        function setupSearchInput(inputId, resultsId) {
+            const input = document.getElementById(inputId);
+            const results = document.getElementById(resultsId);
+            if (!input || !results) return;
+            
+            input.addEventListener('input', function() {
+                const query = this.value.trim();
+                if (query.length >= 2) {
+                    const matches = searchPrograms(query);
+                    renderSearchResults(matches, results);
+                } else {
+                    results.style.display = 'none';
+                }
+            });
+            
+            input.addEventListener('focus', function() {
+                const query = this.value.trim();
+                if (query.length >= 2) {
+                    const matches = searchPrograms(query);
+                    renderSearchResults(matches, results);
+                }
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!input.contains(e.target) && !results.contains(e.target)) {
+                    results.style.display = 'none';
+                }
+            });
+        }
+        
+        // Initialize search on all search inputs
+        setupSearchInput('navSearchInput', 'navSearchResults');
+        setupSearchInput('mobileSearchInput', 'mobileSearchResults');
+    </script>
+</body>
+</html>
