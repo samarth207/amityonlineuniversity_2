@@ -183,6 +183,34 @@
         .flip-card-back {
             transform: rotateY(180deg);
         }
+        
+        /* Mobile Responsive Styles for Testimonials */
+        @media (max-width: 768px) {
+            .testimonial-slide {
+                flex: 0 0 85% !important;
+                min-height: auto !important;
+            }
+            
+            .video-testimonial-slide {
+                flex: 0 0 calc(50% - 15px) !important;
+                min-height: 280px !important;
+            }
+            
+            .testimonial-text {
+                max-height: none !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .testimonial-slide {
+                flex: 0 0 90% !important;
+            }
+            
+            .video-testimonial-slide {
+                flex: 0 0 calc(50% - 15px) !important;
+                min-height: 220px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -266,15 +294,6 @@
                         <button onclick="openShareModal()" style="background: white; border: none; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
                             <i class="fas fa-share-alt" style="color: #1e3a8a; font-size: 16px;"></i>
                         </button>
-                    </div>
-                    
-                    <!-- UGC Badge -->
-                    <div style="background: white; border-radius: 12px; padding: 15px 18px; display: inline-flex; align-items: center; gap: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
-                        <img src="assets/images/ugc-badge.png" alt="UGC Approved" style="height: 50px; width: auto;">
-                        <div>
-                            <p style="color: #1e3a8a; font-weight: 700; font-size: 14px; margin: 0 0 4px 0; line-height: 1.3;">India's first UGC entitled<br>Online BCA Program</p>
-                            <p style="color: #1e3a8a; font-weight: 700; font-size: 14px; margin: 0; line-height: 1.3;">Recognized Degree<br>Worldwide</p>
-                        </div>
                     </div>
                 </div>
                 
@@ -740,11 +759,11 @@
                         <div id="semester-content-0" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
                             <div style="padding: 0 0 20px 20px;">
                                 <ul style="list-style: none; padding: 0; margin: 0;">
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Professional communication</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Core Java</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Advanced Database Management Systems</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Advanced Software Engineering Principles</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Graph Theory and Combinatorics</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Computer and Information Technology</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Basic Mathematics I</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Programming in C</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Business Communication</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Human Computer Interaction</li>
                                 </ul>
                             </div>
                         </div>
@@ -761,10 +780,11 @@
                         <div id="semester-content-1" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
                             <div style="padding: 0 0 20px 20px;">
                                 <ul style="list-style: none; padding: 0; margin: 0;">
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Research Methodology</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Data Structures and Algorithm Design</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Cognitive Analytics and Social Skills for Professional</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Network Security and Cryptography</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Data Structure using C</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Operating System Concepts</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Individual Excellence and Social Dynamic</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Environmental Studies</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Software Engineering and Modeling</li>
                                 </ul>
                             </div>
                         </div>
@@ -781,11 +801,11 @@
                         <div id="semester-content-2" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
                             <div style="padding: 0 0 20px 20px;">
                                 <ul style="list-style: none; padding: 0; margin: 0;">
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Unix /Linux Programming</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Seminar(Evaluation)</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Cloud Infrastructure and Services</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Quantitative Aptitude</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Professional Ethics</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Computational Statistics</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Introduction to Data Base Management Systems</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Green computing</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Network Basics</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Object Oriented Programming Using Java</li>
                                 </ul>
                             </div>
                         </div>
@@ -802,12 +822,55 @@
                         <div id="semester-content-3" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
                             <div style="padding: 0 0 20px 20px;">
                                 <ul style="list-style: none; padding: 0; margin: 0;">
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Augmented Reality and Virtual Reality</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Blockchain Technology and Management : Business Management</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Blockchain Technology and Management : Technical Development</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Elective Courses (General)</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Machine Learning</li>
-                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Machine Learning and Artificial Intelligence</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Unix Operating System and Shell Programming</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Python Programming</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Cyber and Information Security</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Fundamental of Cloud Computing and Enterprise</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Fundamentals of Digital Marketing</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> IT Project Management</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Semester 5 -->
+                    <div style="border-bottom: 1px solid #d4d4d4;">
+                        <div onclick="toggleSemester(4)" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; color: #1e3a8a;">
+                            <h3 style="font-size: 1.5rem; font-weight: 600; margin: 0; font-family: 'Raleway', sans-serif;">Semester 5</h3>
+                            <svg id="semester-icon-4" width="20" height="20" viewBox="0 0 16 16" fill="#1e3a8a" style="transition: transform 0.3s;">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </div>
+                        <div id="semester-content-4" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+                            <div style="padding: 0 0 20px 20px;">
+                                <ul style="list-style: none; padding: 0; margin: 0;">
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Professional Ethics</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Introduction to Artificial Intelligence</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Fundamentals of E-commerce</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Data Warehousing and Mining</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Internet of Things</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Introduction to Enterprise Resource Planning</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Semester 6 -->
+                    <div style="border-bottom: 1px solid #d4d4d4;">
+                        <div onclick="toggleSemester(5)" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; color: #1e3a8a;">
+                            <h3 style="font-size: 1.5rem; font-weight: 600; margin: 0; font-family: 'Raleway', sans-serif;">Semester 6</h3>
+                            <svg id="semester-icon-5" width="20" height="20" viewBox="0 0 16 16" fill="#1e3a8a" style="transition: transform 0.3s;">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </div>
+                        <div id="semester-content-5" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+                            <div style="padding: 0 0 20px 20px;">
+                                <ul style="list-style: none; padding: 0; margin: 0;">
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Major Project</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Blockchain Technologies</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Human Resource Management</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Introduction to Data Science</li>
+                                    <li style="padding: 4px 0; color: #6b7280; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><span style="color: #10b981; font-size: 1rem;">✓</span> Introduction to e-Governance</li>
                                 </ul>
                             </div>
                         </div>
