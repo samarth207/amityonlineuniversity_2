@@ -1703,6 +1703,21 @@ section[style*="bba-hero-bg"] > div.container > div[style*="grid"] > div[style*=
     margin-top: 0 !important;
   }
   
+  /* Collaboration Badge Responsive Styles */
+  .collaboration-badge {
+    font-size: 0.7rem !important;
+    gap: 0.3rem !important;
+  }
+  
+  .collaboration-badge span {
+    font-size: 0.7rem !important;
+  }
+  
+  .collaboration-badge img {
+    height: 14px !important;
+    max-width: 80px !important;
+  }
+  
   /* Apply Now button smaller on mobile */
   .btn,
   .btn-primary {
@@ -3487,6 +3502,21 @@ section[style*="bba-hero-bg"] > div.container > div[style*="grid"] > div[style*=
   
   .program-card-new h3 {
     font-size: 0.95rem !important;
+  }
+  
+  /* Collaboration Badge - Extra Small Screens */
+  .collaboration-badge {
+    font-size: 0.65rem !important;
+    gap: 0.25rem !important;
+  }
+  
+  .collaboration-badge span {
+    font-size: 0.65rem !important;
+  }
+  
+  .collaboration-badge img {
+    height: 12px !important;
+    max-width: 70px !important;
   }
   
   /* Why Amity Cards */
