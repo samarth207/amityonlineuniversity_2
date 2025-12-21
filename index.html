@@ -303,11 +303,11 @@
             <!-- Filter Bar and Search -->
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
                 <div class="programs-filter-new" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                    <button class="filter-btn-new active" data-filter="all" style="padding: 10px 24px; border-radius: 25px; border: 2px solid var(--navy-blue); background: var(--navy-blue); color: white; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; font-weight: 500;">All courses</button>
-                    <button class="filter-btn-new" data-filter="pg" style="padding: 10px 24px; border-radius: 25px; border: 2px solid #ccc; background: white; color: #666; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; font-weight: 500;">PG Courses</button>
-                    <button class="filter-btn-new" data-filter="ug" style="padding: 10px 24px; border-radius: 25px; border: 2px solid #ccc; background: white; color: #666; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; font-weight: 500;">UG Courses</button>
-                    <button class="filter-btn-new" data-filter="specialization" style="padding: 10px 24px; border-radius: 25px; border: 2px solid #ccc; background: white; color: #666; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; font-weight: 500;">Specialization</button>
-                    <button class="filter-btn-new" data-filter="certification" style="padding: 10px 24px; border-radius: 25px; border: 2px solid #ccc; background: white; color: #666; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; font-weight: 500;">Certification</button>
+                    <button class="filter-btn-new active" data-filter="all" onclick="filterCourses('all', this)" style="padding: 10px 24px; border-radius: 25px; border: 2px solid var(--navy-blue); background: var(--navy-blue); color: white; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; font-weight: 500;">All courses</button>
+                    <button class="filter-btn-new" data-filter="pg" onclick="filterCourses('pg', this)" style="padding: 10px 24px; border-radius: 25px; border: 2px solid #ccc; background: white; color: #666; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; font-weight: 500;">PG Courses</button>
+                    <button class="filter-btn-new" data-filter="ug" onclick="filterCourses('ug', this)" style="padding: 10px 24px; border-radius: 25px; border: 2px solid #ccc; background: white; color: #666; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; font-weight: 500;">UG Courses</button>
+                    <button class="filter-btn-new" data-filter="specialization" onclick="filterCourses('specialization', this)" style="padding: 10px 24px; border-radius: 25px; border: 2px solid #ccc; background: white; color: #666; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; font-weight: 500;">Specialization</button>
+                    <button class="filter-btn-new" data-filter="certification" onclick="filterCourses('certification', this)" style="padding: 10px 24px; border-radius: 25px; border: 2px solid #ccc; background: white; color: #666; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; font-weight: 500;">Certification</button>
                 </div>
                 
                 <div style="position: relative; width: 320px;">
@@ -319,11 +319,102 @@
             
             <!-- Category Tabs -->
             <div style="display: flex; gap: 2rem; margin-bottom: 2rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.5rem;">
-                <a href="#" class="category-tab active" data-category-type="management" style="color: #8B0000; text-decoration: none; font-size: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #8B0000; font-weight: 500;">Management</a>
-                <a href="#" class="category-tab" data-category-type="it" style="color: #666; text-decoration: none; font-size: 1rem; padding-bottom: 0.5rem;">IT Courses</a>
-                <a href="#" class="category-tab" data-category-type="arts" style="color: #666; text-decoration: none; font-size: 1rem; padding-bottom: 0.5rem;">Arts & Humanities</a>
-                <a href="#" class="category-tab" data-category-type="commerce" style="color: #666; text-decoration: none; font-size: 1rem; padding-bottom: 0.5rem;">Commerce</a>
+                <a href="#" class="category-tab active" data-category-type="management" onclick="filterByCategory('management', this); return false;" style="color: #8B0000; text-decoration: none; font-size: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #8B0000; font-weight: 500;">Management</a>
+                <a href="#" class="category-tab" data-category-type="it" onclick="filterByCategory('it', this); return false;" style="color: #666; text-decoration: none; font-size: 1rem; padding-bottom: 0.5rem;">IT Courses</a>
+                <a href="#" class="category-tab" data-category-type="arts" onclick="filterByCategory('arts', this); return false;" style="color: #666; text-decoration: none; font-size: 1rem; padding-bottom: 0.5rem;">Arts & Humanities</a>
+                <a href="#" class="category-tab" data-category-type="commerce" onclick="filterByCategory('commerce', this); return false;" style="color: #666; text-decoration: none; font-size: 1rem; padding-bottom: 0.5rem;">Commerce</a>
             </div>
+            
+            <script>
+            // Define filter functions immediately so they're available for onclick handlers
+            window.filterCourses = function(filterValue, clickedBtn) {
+                console.log('Filter clicked:', filterValue);
+                
+                // Remove active class from all filter buttons
+                var allFilterBtns = document.querySelectorAll('.filter-btn-new');
+                for (var i = 0; i < allFilterBtns.length; i++) {
+                    allFilterBtns[i].classList.remove('active');
+                    allFilterBtns[i].style.background = 'white';
+                    allFilterBtns[i].style.color = '#666';
+                    allFilterBtns[i].style.borderColor = '#ccc';
+                }
+                
+                // Add active class to clicked button
+                if (clickedBtn) {
+                    clickedBtn.classList.add('active');
+                    clickedBtn.style.background = 'var(--navy-blue)';
+                    clickedBtn.style.color = 'white';
+                    clickedBtn.style.borderColor = 'var(--navy-blue)';
+                }
+                
+                // Filter program cards - use CSS class for hiding to work with mobile !important rules
+                var programCards = document.querySelectorAll('.program-card-new');
+                var visibleCount = 0;
+                for (var j = 0; j < programCards.length; j++) {
+                    var card = programCards[j];
+                    var category = card.getAttribute('data-category');
+                    
+                    if (filterValue === 'all' || category === filterValue) {
+                        card.classList.remove('hidden-card');
+                        card.style.visibility = 'visible';
+                        card.style.opacity = '1';
+                        visibleCount++;
+                    } else {
+                        card.classList.add('hidden-card');
+                        card.style.visibility = 'hidden';
+                        card.style.opacity = '0';
+                    }
+                }
+                
+                console.log('Showing', visibleCount, 'cards');
+            };
+            
+            window.filterByCategory = function(categoryType, clickedTab) {
+                console.log('Category clicked:', categoryType);
+                
+                // Remove active state from all tabs
+                var allTabs = document.querySelectorAll('.category-tab');
+                for (var i = 0; i < allTabs.length; i++) {
+                    allTabs[i].classList.remove('active');
+                    allTabs[i].style.color = '#666';
+                    allTabs[i].style.borderBottom = 'none';
+                }
+                
+                // Add active state to clicked tab
+                if (clickedTab) {
+                    clickedTab.classList.add('active');
+                    clickedTab.style.color = '#8B0000';
+                    clickedTab.style.borderBottom = '2px solid #8B0000';
+                }
+                
+                // Filter courses by category type - use CSS class for hiding to work with mobile !important rules
+                var programCards = document.querySelectorAll('.program-card-new');
+                var visibleCount = 0;
+                for (var j = 0; j < programCards.length; j++) {
+                    var card = programCards[j];
+                    var cardType = card.getAttribute('data-type');
+                    
+                    if (cardType === categoryType) {
+                        card.classList.remove('hidden-card');
+                        card.style.visibility = 'visible';
+                        card.style.opacity = '1';
+                        visibleCount++;
+                    } else {
+                        card.classList.add('hidden-card');
+                        card.style.visibility = 'hidden';
+                        card.style.opacity = '0';
+                    }
+                }
+                
+                console.log('Showing', visibleCount, 'cards for', categoryType);
+                
+                // Reset carousel position
+                var carousel = document.querySelector('.programs-carousel');
+                if (carousel) {
+                    carousel.scrollTo({ left: 0, behavior: 'smooth' });
+                }
+            };
+            </script>
             
             <!-- Programs Carousel -->
             <div style="position: relative;">
@@ -2415,6 +2506,8 @@ I would definitely recommend Amity Online to others. It offers a perfect balance
         setupSearchInput('navSearchInput', 'navSearchResults');
         setupSearchInput('mobileSearchInput', 'mobileSearchResults');
         setupSearchInput('programsSearchInput', 'programsSearchResults');
+        
+        // Note: Filter functions are defined inline near the filter buttons for immediate availability
     </script>
 
     <!-- Popup Form Modal -->
@@ -2440,13 +2533,13 @@ I would definitely recommend Amity Online to others. It offers a perfect balance
                     <!-- Phone Number -->
                     <div>
                         <label for="popup_phone_number" style="display: block; text-transform: uppercase; font-size: 11px; color: #1e3a8a; font-weight: 600; margin-bottom: 5px; letter-spacing: 0.5px;">Phone Number *</label>
-                        <div style="display: flex; gap: 8px;">
-                            <select style="padding: 10px 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; color: #1f2937; background: white; outline: none; width: 90px;">
+                        <div style="display: flex; gap: 8px; width: 100%;">
+                            <select style="padding: 10px 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; color: #1f2937; background: white; outline: none; width: 90px; flex-shrink: 0;">
                                 <option value="+91">IN +91</option>
                                 <option value="+1">US +1</option>
                                 <option value="+44">UK +44</option>
                             </select>
-                            <input type="tel" id="popup_phone_number" placeholder="Enter your no." required style="flex: 1; padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; color: #1f2937; outline: none; transition: border-color 0.3s ease;">
+                            <input type="tel" id="popup_phone_number" placeholder="Enter your no." required style="flex: 1; min-width: 0; padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; color: #1f2937; outline: none; transition: border-color 0.3s ease;">
                         </div>
                     </div>
                     
@@ -2498,6 +2591,29 @@ I would definitely recommend Amity Online to others. It offers a perfect balance
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+        
+        /* Mobile responsive styles for popup form */
+        @media (max-width: 768px) {
+            #popupModal > div {
+                width: 95% !important;
+                margin: 10% auto !important;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            
+            #popupModal > div > div:last-child {
+                padding: 20px !important;
+            }
+            
+            #popup-apply-form {
+                gap: 12px !important;
+            }
+            
+            #popup-apply-form input,
+            #popup-apply-form select {
+                font-size: 14px !important;
             }
         }
     </style>

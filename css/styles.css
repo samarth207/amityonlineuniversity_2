@@ -73,6 +73,16 @@ ul {
 }
 
 /* ================================
+   UTILITY CLASSES
+   ================================ */
+
+/* Hidden card class for filter functionality on mobile */
+/* Uses !important to override display: flex !important in responsive styles */
+.program-card-new.hidden-card {
+  display: none !important;
+}
+
+/* ================================
    TYPOGRAPHY
    ================================ */
 
@@ -1614,6 +1624,7 @@ section[style*="bba-hero-bg"] > div.container > div[style*="grid"] > div[style*=
     gap: 0.5rem !important;
     padding-bottom: 10px !important;
     -webkit-overflow-scrolling: touch !important;
+    user-select: none !important;
   }
   
   .programs-filter-new button,
@@ -1622,6 +1633,18 @@ section[style*="bba-hero-bg"] > div.container > div[style*="grid"] > div[style*=
     padding: 8px 16px !important;
     font-size: 0.85rem !important;
     white-space: nowrap !important;
+    pointer-events: auto !important;
+    z-index: 10 !important;
+    position: relative !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: rgba(30, 58, 138, 0.2) !important;
+    user-select: none !important;
+  }
+  
+  /* Programs section subtitle - smaller on mobile */
+  #programs .container > div:first-child p {
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
   }
   
   /* Hide search bar on mobile */
@@ -1641,6 +1664,15 @@ section[style*="bba-hero-bg"] > div.container > div[style*="grid"] > div[style*=
     white-space: nowrap !important;
     font-size: 0.8rem !important;
     padding-bottom: 0.4rem !important;
+    pointer-events: auto !important;
+    z-index: 10 !important;
+    position: relative !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: rgba(139, 0, 0, 0.2) !important;
+    user-select: none !important;
+    display: inline-block !important;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
   }
   
   /* Programs Carousel */
@@ -3502,6 +3534,27 @@ section[style*="bba-hero-bg"] > div.container > div[style*="grid"] > div[style*=
   
   .program-card-new h3 {
     font-size: 0.95rem !important;
+  }
+  
+  /* Programs section subtitle - even smaller on extra small screens */
+  #programs .container > div:first-child p {
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Filter buttons - ensure they work on small screens */
+  .filter-btn-new {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* Category tabs - ensure they work on small screens */
+  .category-tab {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
   }
   
   /* Collaboration Badge - Extra Small Screens */

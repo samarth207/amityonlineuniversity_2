@@ -628,43 +628,11 @@ function throttle(func, limit) {
 // ========================================
 // NEW PROGRAMS SECTION FILTERS
 // ========================================
+// NOTE: Filter functions are now defined inline in index.html for better mobile compatibility
+// The inline onclick handlers directly call filterCourses() and filterByCategory()
+
 const filterBtnsNew = document.querySelectorAll('.filter-btn-new');
 const programCardsNew = document.querySelectorAll('.program-card-new');
-
-if (filterBtnsNew.length > 0) {
-    filterBtnsNew.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterBtnsNew.forEach(b => {
-                b.classList.remove('active');
-                b.style.background = 'white';
-                b.style.color = '#666';
-                b.style.borderColor = '#ccc';
-            });
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            this.style.background = 'var(--navy-blue)';
-            this.style.color = 'white';
-            this.style.borderColor = 'var(--navy-blue)';
-            
-            // Get filter value
-            const filterValue = this.getAttribute('data-filter');
-            
-            // Filter programs
-            programCardsNew.forEach(card => {
-                const category = card.getAttribute('data-category');
-                
-                if (filterValue === 'all' || category === filterValue) {
-                    card.style.display = 'block';
-                    card.style.animation = 'fadeInUp 0.5s ease-out';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-}
 
 // Hover effects for new program cards
 if (programCardsNew.length > 0) {
@@ -710,52 +678,18 @@ if (carouselLeft && carouselRight && carousel) {
 }
 
 // Category tabs active state and filtering
+// NOTE: Category tab functions are now defined inline in index.html for better mobile compatibility
+// The inline onclick handlers directly call filterByCategory()
+
 const categoryTabs = document.querySelectorAll('.category-tab');
+
+// Keep the initialization logic
 if (categoryTabs.length > 0) {
-    categoryTabs.forEach(tab => {
-        tab.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Remove active state from all tabs
-            categoryTabs.forEach(t => {
-                t.classList.remove('active');
-                t.style.color = '#666';
-                t.style.borderBottom = 'none';
-            });
-            
-            // Add active state to clicked tab
-            this.classList.add('active');
-            this.style.color = '#8B0000';
-            this.style.borderBottom = '2px solid #8B0000';
-            
-            // Get category type
-            const categoryType = this.getAttribute('data-category-type');
-            
-            // Filter courses by category type
-            if (programCardsNew.length > 0) {
-                programCardsNew.forEach(card => {
-                    const cardType = card.getAttribute('data-type');
-                    
-                    if (cardType === categoryType) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-                
-                // Reset carousel position
-                if (carousel) {
-                    carousel.scrollTo({ left: 0, behavior: 'smooth' });
-                }
-            }
-        });
-    });
-    
     // Initialize with management category on page load
     setTimeout(() => {
         const firstTab = document.querySelector('.category-tab.active');
-        if (firstTab) {
-            firstTab.click();
+        if (firstTab && typeof filterByCategory === 'function') {
+            filterByCategory('management', firstTab);
         }
     }, 100);
 }
