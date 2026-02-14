@@ -107,10 +107,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Execute statement
         if ($stmt->execute()) {
+            $submissionId = $conn->lastInsertId();
+            
+            // Send SMS notification about new lead
+            try {
+                sendLeadNotification($name, $phone, $email, $course, $formType);
+            } catch(Exception $e) {
+                // Log error but don't fail the submission
+                error_log("SMS notification failed: " . $e->getMessage());
+            }
+            
             echo json_encode([
                 'success' => true,
                 'message' => 'Thank you! Your information has been submitted successfully. Our team will contact you shortly.',
-                'submissionId' => $conn->lastInsertId()
+                'submissionId' => $submissionId
             ]);
         } else {
             echo json_encode([
