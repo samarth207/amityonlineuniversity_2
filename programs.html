@@ -971,8 +971,9 @@
             const checkbox = form.querySelector('#popup_consent');
             const submitBtn = form.querySelector('button[type="submit"]');
             
+            const _pLen = phoneInput.value.replace(/\D/g, '').length;
             const isValid = nameInput.value.trim().length >= 2 &&
-                           phoneInput.value.replace(/\D/g, '').length === 10 &&
+                           _pLen >= 5 && _pLen <= 15 &&
                            emailInput.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) &&
                            courseSelect.value !== '' &&
                            checkbox.checked;

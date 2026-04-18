@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `form_submissions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `form_type` enum('apply','enquire','brochure') NOT NULL,
   `course` varchar(50) NOT NULL DEFAULT 'General',
+  `country_code` varchar(10) DEFAULT NULL,
   `phone` varchar(20) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -17,6 +18,10 @@ CREATE TABLE IF NOT EXISTS `form_submissions` (
   KEY `idx_email` (`email`),
   KEY `idx_submitted_at` (`submitted_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Run this if the table already exists (adds country_code without affecting existing rows)
+ALTER TABLE `form_submissions`
+  ADD COLUMN IF NOT EXISTS `country_code` varchar(10) DEFAULT NULL AFTER `course`;
 
 -- Optional: Create a view for easy data analysis
 CREATE OR REPLACE VIEW `form_submissions_summary` AS

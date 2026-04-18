@@ -358,7 +358,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Phone validation (basic)
             const phoneRegex = /^[\d\s\+\-\(\)]+$/;
-            if (!phoneRegex.test(data.phone) || data.phone.replace(/\D/g, '').length < 10) {
+            const phoneDigits = data.phone.replace(/\D/g, '').length;
+            if (!phoneRegex.test(data.phone) || phoneDigits < 5 || phoneDigits > 15) {
                 showFormMessage('Please enter a valid phone number.', 'error');
                 return;
             }
