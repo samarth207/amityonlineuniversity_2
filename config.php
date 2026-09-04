@@ -6,8 +6,8 @@ date_default_timezone_set('Asia/Kolkata');
 // Update these values with your Hostinger database credentials
 
 define('DB_HOST', 'localhost'); // Usually 'localhost' on Hostinger
-define('DB_NAME', 'u261758575_amity2'); // Your database name from Hostinger
-define('DB_USER', 'u261758575_amity2'); // Your database username
+define('DB_NAME', 'u261758575_amityonlines'); // Your database name from Hostinger
+define('DB_USER', 'u261758575_amityonlines'); // Your database username
 define('DB_PASS', 'm3@G$HxmAr?C'); // Your database password
 
 // Fast2SMS API Configuration
