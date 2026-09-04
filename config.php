@@ -2,18 +2,31 @@
 // Set timezone to Indian Standard Time
 date_default_timezone_set('Asia/Kolkata');
 
-// Database configuration for Hostinger
-// Update these values with your Hostinger database credentials
+// Load a server-only .env file when present; hosting environment variables win.
+$envFile = __DIR__ . '/.env';
+if (is_readable($envFile)) {
+    foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $envLine) {
+        $envLine = trim($envLine);
+        if ($envLine === '' || $envLine[0] === '#') continue;
+        [$envKey, $envValue] = array_pad(explode('=', $envLine, 2), 2, '');
+        $envKey = trim($envKey);
+        if ($envKey !== '' && getenv($envKey) === false) putenv($envKey . '=' . trim($envValue, " \t\"") );
+    }
+}
 
-define('DB_HOST', 'localhost'); // Usually 'localhost' on Hostinger
-define('DB_NAME', 'u261758575_amityonlines'); // Your database name from Hostinger
-define('DB_USER', 'u261758575_amityonlines'); // Your database username
-define('DB_PASS', 'm3@G$HxmAr?C'); // Your database password
+// Keep credentials in Hostinger environment variables or a server-only config.
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_NAME', getenv('DB_NAME') ?: '');
+define('DB_USER', getenv('DB_USER') ?: '');
+define('DB_PASS', getenv('DB_PASS') ?: '');
 
 // Fast2SMS API Configuration
-define('FAST2SMS_API_KEY', '6wn0ySsBPdpTzVcgrx5E9vlA48IUJkNMuhD2R1XGtiqFjZHWOYSouEDkQj5IT6LVwpb9lBKWmxrFyOM2'); // Replace with your Fast2SMS API key
-define('FAST2SMS_SENDER_ID', 'TXTIND'); // Your Fast2SMS Sender ID
-define('FAST2SMS_NOTIFICATION_NUMBER', '9260986219'); // Phone number to receive notifications
+define('FAST2SMS_API_KEY', getenv('FAST2SMS_API_KEY') ?: '');
+define('FAST2SMS_SENDER_ID', getenv('FAST2SMS_SENDER_ID') ?: 'TXTIND');
+define('FAST2SMS_NOTIFICATION_NUMBER', getenv('FAST2SMS_NOTIFICATION_NUMBER') ?: '');
+define('SITE_URL', rtrim(getenv('SITE_URL') ?: 'https://amityonlines.in', '/'));
+define('BLOG_ADMIN_USER', getenv('BLOG_ADMIN_USER') ?: '');
+define('BLOG_ADMIN_PASSWORD_HASH', getenv('BLOG_ADMIN_PASSWORD_HASH') ?: '');
 
 // Create database connection
 function getDBConnection() {

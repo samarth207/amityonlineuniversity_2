@@ -236,6 +236,14 @@ Create your own Node.js/PHP backend to handle form submissions.
 
 ## 🚀 Deployment
 
+### Blog CMS
+
+The project now includes a PHP/MySQL blog system at `/blog` and `/blog/{slug}`, with the admin area at `/blog-admin.php`. Run `blog-schema.sql` in the existing MySQL database, then configure the variables in `.env.example` through Hostinger's server environment or a server-only configuration file. Generate an admin password hash with `password_hash('your-password', PASSWORD_DEFAULT)` and set it as `BLOG_ADMIN_PASSWORD_HASH`.
+
+The Hostinger cron should run `php /home/USERNAME/public_html/cron-publish.php` every 5 minutes for scheduled posts. The public sitemap is `/sitemap.xml`; unpublished and preview content is excluded.
+
+The former credentials were removed from `config.php`. Rotate any database or SMS credentials that were previously committed, because removing them from the working tree does not remove them from Git history.
+
 ### GitHub Pages
 1. Push code to GitHub repository
 2. Go to Settings > Pages
